@@ -80,6 +80,9 @@ public class Accueil extends javax.swing.JFrame {
             }
         });
         BCllient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BCllientMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BCllientMousePressed(evt);
             }
@@ -300,9 +303,16 @@ public class Accueil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        //this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                 this.dispose();
+
+                 System.exit(0);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void BCllientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BCllientMouseClicked
+        new Client().setVisible(true);
+        //this.setVisible(false);
+        //this.dispose();
+        
+    }//GEN-LAST:event_BCllientMouseClicked
 
     /**
      * @param args the command line arguments
