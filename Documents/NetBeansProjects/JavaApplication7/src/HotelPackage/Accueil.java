@@ -120,6 +120,14 @@ public class Accueil extends javax.swing.JFrame {
                 BreservationFocusLost(evt);
             }
         });
+        Breservation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BreservationMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BreservationMousePressed(evt);
+            }
+        });
 
         Bsalle.setBackground(new java.awt.Color(2, 5, 8,0));
         Bsalle.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -134,6 +142,11 @@ public class Accueil extends javax.swing.JFrame {
                 BsalleFocusLost(evt);
             }
         });
+        Bsalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BsalleMouseClicked(evt);
+            }
+        });
 
         BChambre.setBackground(new java.awt.Color(2, 5, 8,0));
         BChambre.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -146,6 +159,11 @@ public class Accueil extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 BChambreFocusLost(evt);
+            }
+        });
+        BChambre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BChambreMouseClicked(evt);
             }
         });
         BChambre.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +331,22 @@ public class Accueil extends javax.swing.JFrame {
         //this.dispose();
         
     }//GEN-LAST:event_BCllientMouseClicked
+
+    private void BreservationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BreservationMousePressed
+       
+    }//GEN-LAST:event_BreservationMousePressed
+
+    private void BreservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BreservationMouseClicked
+        new Réservation().setVisible(true);
+    }//GEN-LAST:event_BreservationMouseClicked
+
+    private void BChambreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BChambreMouseClicked
+      new Chambre().setVisible(true);  
+    }//GEN-LAST:event_BChambreMouseClicked
+
+    private void BsalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BsalleMouseClicked
+        new Salle().setVisible(true);
+    }//GEN-LAST:event_BsalleMouseClicked
 
     /**
      * @param args the command line arguments
