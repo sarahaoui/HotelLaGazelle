@@ -5,12 +5,17 @@
  */
 package HotelPackage;
 
+import java.sql.Connection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pc-click
  */
 public class Chambre extends javax.swing.JFrame {
-
+Connection cnx=null;
     /**
      * Creates new form Chambre
      */
@@ -18,6 +23,7 @@ public class Chambre extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         initComponents();
+        
     }
 
     /**
@@ -36,6 +42,8 @@ public class Chambre extends javax.swing.JFrame {
         Bsupprimer = new javax.swing.JButton();
         BNouveau = new javax.swing.JButton();
         BFiche = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,6 +169,23 @@ public class Chambre extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setBackground(new java.awt.Color(250, 249, 248));
+        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 186, 162), new java.awt.Color(0, 0, 0)));
+        jTable1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(2, 5, 8));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°Chambre", "N°Bloc", "N°Etage", "Catégorie", "Nbr Lits", "Prix", "Disponible"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(2, 5, 8));
+        jTable1.setSelectionBackground(new java.awt.Color(2, 5, 8));
+        jTable1.setSelectionForeground(new java.awt.Color(250, 147, 109));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -173,6 +198,10 @@ public class Chambre extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +211,9 @@ public class Chambre extends javax.swing.JFrame {
                     .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(865, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(372, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
@@ -229,12 +260,42 @@ public class Chambre extends javax.swing.JFrame {
     }//GEN-LAST:event_BNouveauFocusLost
 
     private void BNouveauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BNouveauMousePressed
-        new FicheChambres().setVisible(true);
+      //  new FicheChambres().setVisible(true);
 
     }//GEN-LAST:event_BNouveauMousePressed
 
     private void BNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveauActionPerformed
-        // TODO add your handling code here:
+       try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select * from chambre";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                //add data until finish
+                String Numchambre=String.valueOf(rs.getInt("NumChambre"));
+                String Numbloc=String.valueOf(rs.getInt("NumBloc"));
+                String Numetage=String.valueOf(rs.getInt("NumEtage"));
+                String catégorie=String.valueOf(rs.getString("Catégorie"));
+                String Nbrlits=String.valueOf(rs.getInt("NbrLits"));
+                String prix=String.valueOf(rs.getDouble("PrixChambre"));
+                String Dispo=String.valueOf(rs.getBoolean("Disponible"));
+                
+                //store in table
+                
+                String Table[]={Numchambre,Numbloc,Numetage,catégorie,Nbrlits,prix,Dispo};
+                DefaultTableModel tbModel= (DefaultTableModel)jTable1.getModel();
+               
+                tbModel.addRow(Table);
+            }
+            cnx.close();
+            
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+       
+       
     }//GEN-LAST:event_BNouveauActionPerformed
 
     private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
@@ -296,5 +357,7 @@ public class Chambre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

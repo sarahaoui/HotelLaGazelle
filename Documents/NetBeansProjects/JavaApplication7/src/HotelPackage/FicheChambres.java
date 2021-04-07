@@ -5,12 +5,15 @@
  */
 package HotelPackage;
 
+
+import java.sql.*;
+
 /**
  *
  * @author pc-click
  */
 public class FicheChambres extends javax.swing.JFrame {
-
+Connection cnx=null;
     /**
      * Creates new form FicheChambres
      */
@@ -18,6 +21,7 @@ public class FicheChambres extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         initComponents();
+         cnx = dbConnection.con();
     }
 
     /**
