@@ -162,7 +162,7 @@ Connection cnx=null;
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
-        BFiche.setText("Fiche Chambres");
+        BFiche.setText("Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -215,8 +215,8 @@ Connection cnx=null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,12 +320,8 @@ Connection cnx=null;
     }//GEN-LAST:event_BFicheFocusLost
 
     private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
-          int ligne =0;
-        click=1;
-        ligne=jTable1.getSelectedRow();
-        // recupere les elements
-         SelectNumChambre =jTable1.getValueAt(ligne,0).toString();
-         new FicheChambres().setVisible(true);
+         
+         new Modifierchambre().setVisible(true);
     }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
