@@ -162,7 +162,7 @@ Connection cnx=null;
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
-        BFiche.setText("Modifier");
+        BFiche.setText(" Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -287,7 +287,7 @@ Connection cnx=null;
            
         }catch(Exception e){
         JOptionPane.showMessageDialog(null, e);}
-           updatetable();
+          
         
         
         
@@ -311,24 +311,22 @@ Connection cnx=null;
        new FicheChambres().setVisible(true);
     }//GEN-LAST:event_BNouveauActionPerformed
 
-    private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BFicheFocusGained
+    private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
+
+    }//GEN-LAST:event_BFicheActionPerformed
+
+    private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
+
+        new Modifierchambre().setVisible(true);
+    }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_BFicheFocusLost
 
-    private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
-         
-         new Modifierchambre().setVisible(true);
-    }//GEN-LAST:event_BFicheMousePressed
-
-    private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
-      
-        
-     
-    }//GEN-LAST:event_BFicheActionPerformed
+    private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BFicheFocusGained
 
     /**
      * @param args the command line arguments

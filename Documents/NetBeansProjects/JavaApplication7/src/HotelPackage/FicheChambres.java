@@ -23,11 +23,7 @@ Connection cnx=null;
         setUndecorated(true);
         setResizable(false);
         initComponents();
-         String NumChambre = new Chambre().SelectNumChambre;
-         int clickk= new Chambre().click;
-         JOptionPane.showMessageDialog(null, clickk);
-         JOptionPane.showMessageDialog(null, NumChambre);
-          this.NumChambre.setText(NumChambre);
+       
          
     }
 

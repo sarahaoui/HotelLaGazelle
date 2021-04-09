@@ -5,6 +5,11 @@
  */
 package HotelPackage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pc-click
@@ -34,13 +39,13 @@ public class FicheSalle extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        NumSalle = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        Categorie = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        BCllient = new javax.swing.JButton();
-        BChambre = new javax.swing.JButton();
+        prix = new javax.swing.JTextField();
+        BConfirmer = new javax.swing.JButton();
+        BAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,71 +99,76 @@ public class FicheSalle extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(2, 5, 8));
-        jLabel17.setText("N° de chambre");
+        jLabel17.setText("N° de salle");
 
-        jTextField5.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField5.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(2, 5, 8));
+        NumSalle.setBackground(new java.awt.Color(250, 249, 248));
+        NumSalle.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        NumSalle.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(2, 5, 8));
         jLabel20.setText("Catégorie");
 
-        jTextField8.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField8.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(2, 5, 8));
+        Categorie.setBackground(new java.awt.Color(250, 249, 248));
+        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        Categorie.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel22.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(2, 5, 8));
         jLabel22.setText("Prix de salle");
 
-        jTextField10.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField10.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(2, 5, 8));
+        prix.setBackground(new java.awt.Color(250, 249, 248));
+        prix.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        prix.setForeground(new java.awt.Color(2, 5, 8));
 
-        BCllient.setBackground(new java.awt.Color(0, 0, 0));
-        BCllient.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BCllient.setForeground(new java.awt.Color(250, 249, 248));
-        BCllient.setText("Confirmer");
-        BCllient.setPreferredSize(new java.awt.Dimension(150, 52));
-        BCllient.addFocusListener(new java.awt.event.FocusAdapter() {
+        BConfirmer.setBackground(new java.awt.Color(0, 0, 0));
+        BConfirmer.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        BConfirmer.setForeground(new java.awt.Color(250, 249, 248));
+        BConfirmer.setText("Confirmer");
+        BConfirmer.setPreferredSize(new java.awt.Dimension(150, 52));
+        BConfirmer.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                BCllientFocusGained(evt);
+                BConfirmerFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                BCllientFocusLost(evt);
+                BConfirmerFocusLost(evt);
             }
         });
-        BCllient.addMouseListener(new java.awt.event.MouseAdapter() {
+        BConfirmer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BCllientMouseClicked(evt);
+                BConfirmerMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BCllientMousePressed(evt);
+                BConfirmerMousePressed(evt);
             }
         });
-        BCllient.addActionListener(new java.awt.event.ActionListener() {
+        BConfirmer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BCllientActionPerformed(evt);
+                BConfirmerActionPerformed(evt);
             }
         });
 
-        BChambre.setBackground(new java.awt.Color(0, 0, 0));
-        BChambre.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BChambre.setForeground(new java.awt.Color(250, 249, 248));
-        BChambre.setText("Annuler");
-        BChambre.setPreferredSize(new java.awt.Dimension(150, 52));
-        BChambre.addFocusListener(new java.awt.event.FocusAdapter() {
+        BAnnuler.setBackground(new java.awt.Color(0, 0, 0));
+        BAnnuler.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        BAnnuler.setForeground(new java.awt.Color(250, 249, 248));
+        BAnnuler.setText("Annuler");
+        BAnnuler.setPreferredSize(new java.awt.Dimension(150, 52));
+        BAnnuler.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                BChambreFocusGained(evt);
+                BAnnulerFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                BChambreFocusLost(evt);
+                BAnnulerFocusLost(evt);
             }
         });
-        BChambre.addActionListener(new java.awt.event.ActionListener() {
+        BAnnuler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BAnnulerMousePressed(evt);
+            }
+        });
+        BAnnuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BChambreActionPerformed(evt);
+                BAnnulerActionPerformed(evt);
             }
         });
 
@@ -168,9 +178,9 @@ public class FicheSalle extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(177, 177, 177))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
@@ -178,15 +188,15 @@ public class FicheSalle extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addComponent(NumSalle, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(113, 113, 113)
                 .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(261, 261, 261))
         );
         jPanel2Layout.setVerticalGroup(
@@ -196,18 +206,18 @@ public class FicheSalle extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel20)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel17)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(NumSalle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(305, 305, 305))
         );
 
@@ -221,7 +231,7 @@ public class FicheSalle extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        new Accueil().setVisible(true);
+        new Salle().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1MousePressed
 
@@ -229,43 +239,77 @@ public class FicheSalle extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void BChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BChambreActionPerformed
+    private void BAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnnulerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BChambreActionPerformed
+    }//GEN-LAST:event_BAnnulerActionPerformed
 
-    private void BChambreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BChambreFocusLost
-        BChambre.setBackground(new java.awt.Color(2,5,8,0));
-        BChambre.setForeground(new java.awt.Color(250,249,248));
-    }//GEN-LAST:event_BChambreFocusLost
+    private void BAnnulerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BAnnulerFocusLost
+        BAnnuler.setBackground(new java.awt.Color(0,0,0));
+        BAnnuler.setForeground(new java.awt.Color(250,249,248));
+    }//GEN-LAST:event_BAnnulerFocusLost
 
-    private void BChambreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BChambreFocusGained
-        BChambre.setBackground(new java.awt.Color(250,249,248));
-        BChambre.setForeground(new java.awt.Color(2, 5, 8));
-    }//GEN-LAST:event_BChambreFocusGained
+    private void BAnnulerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BAnnulerFocusGained
+        BAnnuler.setBackground(new java.awt.Color(250,249,248));
+        BAnnuler.setForeground(new java.awt.Color(2, 5, 8));
+    }//GEN-LAST:event_BAnnulerFocusGained
 
-    private void BCllientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCllientActionPerformed
+    private void BConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConfirmerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BCllientActionPerformed
+    }//GEN-LAST:event_BConfirmerActionPerformed
 
-    private void BCllientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BCllientMousePressed
+    private void BConfirmerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BConfirmerMousePressed
+    // conditions sur les champs 
+      int k=0;
+      String catégorie= Categorie.getText().toString(); 
+      try{
+        Integer.parseInt(NumSalle.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de salle doit etre un nombre entier !!");;} 
+      
+       try{
+        Integer.parseInt(prix.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "le prix de salle doit etre un nombre  !!");}  
+       
+         
+      //remplir BD 
+      if(k==2){
+      try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL ="insert into salle(NumSalle,PrixSalle,CategorieSalle,DisponibilteSalle)"+
+              "values("+NumSalle.getText().toString()+","+prix.getText().toString()+","+"\""+Categorie.getText().toString()+"\"" +","+"\""+1+"\""+");";
+            
+            st.executeUpdate(SQL); 
+            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            this.dispose();
+            new Salle().setVisible(true);
+           
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}}
+    }//GEN-LAST:event_BConfirmerMousePressed
 
-    }//GEN-LAST:event_BCllientMousePressed
+    private void BConfirmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BConfirmerMouseClicked
+        
+    }//GEN-LAST:event_BConfirmerMouseClicked
 
-    private void BCllientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BCllientMouseClicked
-        new Client().setVisible(true);
-        //this.setVisible(false);
-        //this.dispose();
-    }//GEN-LAST:event_BCllientMouseClicked
+    private void BConfirmerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BConfirmerFocusLost
+        BConfirmer.setBackground(new java.awt.Color(0,0,0));
+        BConfirmer.setForeground(new java.awt.Color(250,249,248));
+    }//GEN-LAST:event_BConfirmerFocusLost
 
-    private void BCllientFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BCllientFocusLost
-        BCllient.setBackground(new java.awt.Color(2,5,8,0));
-        BCllient.setForeground(new java.awt.Color(250,249,248));
-    }//GEN-LAST:event_BCllientFocusLost
+    private void BConfirmerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BConfirmerFocusGained
+        BConfirmer.setBackground(new java.awt.Color(250,249,248));
+        BConfirmer.setForeground(new java.awt.Color(2, 5, 8));
+    }//GEN-LAST:event_BConfirmerFocusGained
 
-    private void BCllientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BCllientFocusGained
-        BCllient.setBackground(new java.awt.Color(250,249,248));
-        BCllient.setForeground(new java.awt.Color(2, 5, 8));
-    }//GEN-LAST:event_BCllientFocusGained
+    private void BAnnulerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BAnnulerMousePressed
+        new Salle().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BAnnulerMousePressed
 
     /**
      * @param args the command line arguments
@@ -303,8 +347,10 @@ public class FicheSalle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BChambre;
-    private javax.swing.JButton BCllient;
+    private javax.swing.JButton BAnnuler;
+    private javax.swing.JButton BConfirmer;
+    private javax.swing.JTextField Categorie;
+    private javax.swing.JTextField NumSalle;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -312,8 +358,6 @@ public class FicheSalle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField prix;
     // End of variables declaration//GEN-END:variables
 }

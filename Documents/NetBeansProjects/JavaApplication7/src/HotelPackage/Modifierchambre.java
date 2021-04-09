@@ -41,7 +41,7 @@ public class Modifierchambre extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        BFiche = new javax.swing.JButton();
+        BModifier = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         NumChambre = new javax.swing.JTextField();
@@ -107,27 +107,27 @@ public class Modifierchambre extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 248));
 
-        BFiche.setBackground(new java.awt.Color(0, 0, 0));
-        BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BFiche.setForeground(new java.awt.Color(250, 249, 248));
-        BFiche.setText(" Modifier");
-        BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
-        BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
+        BModifier.setBackground(new java.awt.Color(0, 0, 0));
+        BModifier.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        BModifier.setForeground(new java.awt.Color(250, 249, 248));
+        BModifier.setText(" Modifier");
+        BModifier.setPreferredSize(new java.awt.Dimension(150, 52));
+        BModifier.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                BFicheFocusGained(evt);
+                BModifierFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                BFicheFocusLost(evt);
+                BModifierFocusLost(evt);
             }
         });
-        BFiche.addMouseListener(new java.awt.event.MouseAdapter() {
+        BModifier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BFicheMousePressed(evt);
+                BModifierMousePressed(evt);
             }
         });
-        BFiche.addActionListener(new java.awt.event.ActionListener() {
+        BModifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BFicheActionPerformed(evt);
+                BModifierActionPerformed(evt);
             }
         });
 
@@ -196,6 +196,10 @@ public class Modifierchambre extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -204,7 +208,7 @@ public class Modifierchambre extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(163, 163, 163)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
@@ -229,11 +233,7 @@ public class Modifierchambre extends javax.swing.JFrame {
                                 .addComponent(jLabel23)
                                 .addGap(18, 18, 18)
                                 .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(401, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(165, 165, 165))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +242,7 @@ public class Modifierchambre extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(NumChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,8 +260,8 @@ public class Modifierchambre extends javax.swing.JFrame {
                     .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
                     .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(BModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(396, 396, 396))
         );
 
@@ -283,19 +283,21 @@ public class Modifierchambre extends javax.swing.JFrame {
      
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BFicheFocusGained
+    private void BModifierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BModifierFocusGained
+        BModifier.setBackground(new java.awt.Color(250,249,248));
+        BModifier.setForeground(new java.awt.Color(2, 5, 8));
+    }//GEN-LAST:event_BModifierFocusGained
 
-    private void BFicheFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BFicheFocusLost
+    private void BModifierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BModifierFocusLost
+        BModifier.setBackground(new java.awt.Color(0,0,0));
+        BModifier.setForeground(new java.awt.Color(250,249,248));
+    }//GEN-LAST:event_BModifierFocusLost
 
-    private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
+    private void BModifierMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BModifierMousePressed
         
-    }//GEN-LAST:event_BFicheMousePressed
+    }//GEN-LAST:event_BModifierMousePressed
 
-    private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
+    private void BModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModifierActionPerformed
       // conditions sur les champs 
       int k=0;
       String catégorie= Categorie1.getText().toString(); 
@@ -339,7 +341,7 @@ public class Modifierchambre extends javax.swing.JFrame {
            
         }catch(Exception e){
         JOptionPane.showMessageDialog(null, e);}}
-    }//GEN-LAST:event_BFicheActionPerformed
+    }//GEN-LAST:event_BModifierActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        selectvalue= jComboBox1.getSelectedItem().toString();
@@ -427,7 +429,7 @@ public class Modifierchambre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BFiche;
+    private javax.swing.JButton BModifier;
     private javax.swing.JTextField Categorie1;
     private javax.swing.JTextField NbrLits;
     private javax.swing.JTextField NumBloc;
