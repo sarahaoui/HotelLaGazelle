@@ -7,6 +7,8 @@ package HotelPackage;
 
 
 import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +23,12 @@ Connection cnx=null;
         setUndecorated(true);
         setResizable(false);
         initComponents();
-         cnx = dbConnection.con();
+         String NumChambre = new Chambre().SelectNumChambre;
+         int clickk= new Chambre().click;
+         JOptionPane.showMessageDialog(null, clickk);
+         JOptionPane.showMessageDialog(null, NumChambre);
+          this.NumChambre.setText(NumChambre);
+         
     }
 
     /**
@@ -38,19 +45,19 @@ Connection cnx=null;
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        NumChambre = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        NumBloc = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        NumEtage = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        Categorie = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        NbrLits = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        BCllient = new javax.swing.JButton();
-        BChambre = new javax.swing.JButton();
+        Prix = new javax.swing.JTextField();
+        Confirme = new javax.swing.JButton();
+        Annuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,93 +113,98 @@ Connection cnx=null;
         jLabel17.setForeground(new java.awt.Color(2, 5, 8));
         jLabel17.setText("N° de chambre");
 
-        jTextField5.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField5.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(2, 5, 8));
+        NumChambre.setBackground(new java.awt.Color(250, 249, 248));
+        NumChambre.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        NumChambre.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(2, 5, 8));
         jLabel18.setText("N° de bloc");
 
-        jTextField6.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField6.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(2, 5, 8));
+        NumBloc.setBackground(new java.awt.Color(250, 249, 248));
+        NumBloc.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        NumBloc.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(2, 5, 8));
         jLabel19.setText("N° de étage");
 
-        jTextField7.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField7.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(2, 5, 8));
+        NumEtage.setBackground(new java.awt.Color(250, 249, 248));
+        NumEtage.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        NumEtage.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(2, 5, 8));
         jLabel20.setText("Catégorie");
 
-        jTextField8.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField8.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(2, 5, 8));
+        Categorie.setBackground(new java.awt.Color(250, 249, 248));
+        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        Categorie.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel21.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(2, 5, 8));
         jLabel21.setText("Nbr de lits");
 
-        jTextField9.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField9.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(2, 5, 8));
+        NbrLits.setBackground(new java.awt.Color(250, 249, 248));
+        NbrLits.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        NbrLits.setForeground(new java.awt.Color(2, 5, 8));
 
         jLabel22.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(2, 5, 8));
         jLabel22.setText("Prix de chambre");
 
-        jTextField10.setBackground(new java.awt.Color(250, 249, 248));
-        jTextField10.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(2, 5, 8));
+        Prix.setBackground(new java.awt.Color(250, 249, 248));
+        Prix.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        Prix.setForeground(new java.awt.Color(2, 5, 8));
 
-        BCllient.setBackground(new java.awt.Color(0, 0, 0));
-        BCllient.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BCllient.setForeground(new java.awt.Color(250, 249, 248));
-        BCllient.setText("Confirmer");
-        BCllient.setPreferredSize(new java.awt.Dimension(150, 52));
-        BCllient.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BCllientFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                BCllientFocusLost(evt);
+        Confirme.setBackground(new java.awt.Color(0, 0, 0));
+        Confirme.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Confirme.setForeground(new java.awt.Color(250, 249, 248));
+        Confirme.setText("Confirmer");
+        Confirme.setPreferredSize(new java.awt.Dimension(150, 52));
+        Confirme.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ConfirmeMouseMoved(evt);
             }
         });
-        BCllient.addMouseListener(new java.awt.event.MouseAdapter() {
+        Confirme.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ConfirmeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ConfirmeFocusLost(evt);
+            }
+        });
+        Confirme.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BCllientMouseClicked(evt);
+                ConfirmeMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BCllientMousePressed(evt);
+                ConfirmeMousePressed(evt);
             }
         });
-        BCllient.addActionListener(new java.awt.event.ActionListener() {
+        Confirme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BCllientActionPerformed(evt);
+                ConfirmeActionPerformed(evt);
             }
         });
 
-        BChambre.setBackground(new java.awt.Color(0, 0, 0));
-        BChambre.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BChambre.setForeground(new java.awt.Color(250, 249, 248));
-        BChambre.setText("Annuler");
-        BChambre.setPreferredSize(new java.awt.Dimension(150, 52));
-        BChambre.addFocusListener(new java.awt.event.FocusAdapter() {
+        Annuler.setBackground(new java.awt.Color(0, 0, 0));
+        Annuler.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Annuler.setForeground(new java.awt.Color(250, 249, 248));
+        Annuler.setText("Annuler");
+        Annuler.setPreferredSize(new java.awt.Dimension(150, 52));
+        Annuler.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                BChambreFocusGained(evt);
+                AnnulerFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                BChambreFocusLost(evt);
+                AnnulerFocusLost(evt);
             }
         });
-        BChambre.addActionListener(new java.awt.event.ActionListener() {
+        Annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BChambreActionPerformed(evt);
+                AnnulerActionPerformed(evt);
             }
         });
 
@@ -206,35 +218,35 @@ Connection cnx=null;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(NumChambre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumBloc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(113, 113, 113)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Categorie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NbrLits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(261, 261, 261))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Confirme, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(177, 177, 177))
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,31 +257,31 @@ Connection cnx=null;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NbrLits, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NumChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NumBloc, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Confirme, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(305, 305, 305))
         );
 
@@ -283,51 +295,101 @@ Connection cnx=null;
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        new Accueil().setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        new Chambre().setVisible(true);
+        this.dispose();
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void BCllientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BCllientFocusGained
-        BCllient.setBackground(new java.awt.Color(250,249,248));
-        BCllient.setForeground(new java.awt.Color(2, 5, 8));
-    }//GEN-LAST:event_BCllientFocusGained
+    private void ConfirmeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmeFocusGained
+        Confirme.setBackground(new java.awt.Color(250,249,248));
+        Confirme.setForeground(new java.awt.Color(2, 5, 8));
+    }//GEN-LAST:event_ConfirmeFocusGained
 
-    private void BCllientFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BCllientFocusLost
-        BCllient.setBackground(new java.awt.Color(2,5,8,0));
-        BCllient.setForeground(new java.awt.Color(250,249,248));
-    }//GEN-LAST:event_BCllientFocusLost
+    private void ConfirmeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmeFocusLost
+        Confirme.setBackground(new java.awt.Color(0,0,0));
+        Confirme.setForeground(new java.awt.Color(250,249,248));
+    }//GEN-LAST:event_ConfirmeFocusLost
 
-    private void BCllientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BCllientMouseClicked
-        new Client().setVisible(true);
-        //this.setVisible(false);
-        //this.dispose();
-    }//GEN-LAST:event_BCllientMouseClicked
+    private void ConfirmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmeMouseClicked
+      
+    }//GEN-LAST:event_ConfirmeMouseClicked
 
-    private void BCllientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BCllientMousePressed
+    private void ConfirmeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmeMousePressed
 
-    }//GEN-LAST:event_BCllientMousePressed
+    }//GEN-LAST:event_ConfirmeMousePressed
 
-    private void BCllientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCllientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BCllientActionPerformed
+    private void ConfirmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmeActionPerformed
+      // conditions sur les champs 
+      int k=0;
+      String catégorie= Categorie.getText().toString(); 
+      try{
+        Integer.parseInt(NumChambre.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de chambre doit etre un nombre entier !!");;} 
+        try{
+        Integer.parseInt(NumBloc.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de bloc doit etre un nombre entier !!");} 
+       try{
+        Integer.parseInt(NumEtage.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de l'étage doit etre un nombre entier !!");}  
+       try{
+        Integer.parseInt(NbrLits.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "le nombre de lits doit etre un nombre entier !!");} 
+      try{
+        Double.parseDouble(Prix.getText());
+        k++;
+    }catch(Exception e){JOptionPane.showMessageDialog(null, "le prix de chambre doit etre un nombre !!");}  
+         
+      //remplir BD 
+      if(k==5){
+      try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL ="insert into chambre(NumChambre,NumBloc,NumEtage,Categorie,NbrLits,PrixChambre,Disponible)"+
+              "values("+NumChambre.getText().toString()+","+NumBloc.getText().toString()+","+NumEtage.getText().toString()+","+"\""+Categorie.getText().toString()+"\"" +","+NbrLits.getText().toString()+","+Prix.getText().toString()+","+1+");";
+            
+            st.executeUpdate(SQL); 
+            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            this.dispose();
+            new Chambre().setVisible(true);
+           
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}}
+      
+      
+        
+    }//GEN-LAST:event_ConfirmeActionPerformed
 
-    private void BChambreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BChambreFocusGained
-        BChambre.setBackground(new java.awt.Color(250,249,248));
-        BChambre.setForeground(new java.awt.Color(2, 5, 8));
-    }//GEN-LAST:event_BChambreFocusGained
+    private void AnnulerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnnulerFocusGained
+        Annuler.setBackground(new java.awt.Color(250,249,248));
+        Annuler.setForeground(new java.awt.Color(2, 5, 8));
+    }//GEN-LAST:event_AnnulerFocusGained
 
-    private void BChambreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BChambreFocusLost
-        BChambre.setBackground(new java.awt.Color(2,5,8,0));
-        BChambre.setForeground(new java.awt.Color(250,249,248));
-    }//GEN-LAST:event_BChambreFocusLost
+    private void AnnulerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnnulerFocusLost
+        Annuler.setBackground(new java.awt.Color(0,0,0));
+        Annuler.setForeground(new java.awt.Color(250,249,248));
+    }//GEN-LAST:event_AnnulerFocusLost
 
-    private void BChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BChambreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BChambreActionPerformed
+    private void AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnulerActionPerformed
+        new Chambre().setVisible(true);
+        this.dispose();
+      
+           
+    }//GEN-LAST:event_AnnulerActionPerformed
+
+    private void ConfirmeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmeMouseMoved
+        
+    }//GEN-LAST:event_ConfirmeMouseMoved
 
     /**
      * @param args the command line arguments
@@ -365,8 +427,14 @@ Connection cnx=null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BChambre;
-    private javax.swing.JButton BCllient;
+    private javax.swing.JButton Annuler;
+    private javax.swing.JTextField Categorie;
+    private javax.swing.JButton Confirme;
+    private javax.swing.JTextField NbrLits;
+    private javax.swing.JTextField NumBloc;
+    private javax.swing.JTextField NumChambre;
+    private javax.swing.JTextField NumEtage;
+    private javax.swing.JTextField Prix;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -377,11 +445,5 @@ Connection cnx=null;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

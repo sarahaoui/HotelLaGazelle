@@ -112,7 +112,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextField7" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="NumEtage" min="-2" pref="270" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -121,8 +121,8 @@
                           </Group>
                           <EmptySpace pref="87" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField5" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jTextField6" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="NumChambre" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="NumBloc" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -131,7 +131,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextField10" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="Prix" min="-2" pref="270" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -140,8 +140,8 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField8" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jTextField9" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="Categorie" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="NbrLits" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -149,9 +149,9 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="BCllient" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Component id="Confirme" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="BChambre" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="Annuler" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -164,40 +164,40 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField8" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="Categorie" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField9" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="NbrLits" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField10" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="Prix" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField5" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="NumChambre" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField6" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="NumBloc" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField7" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="NumEtage" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="359" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="BCllient" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="BChambre" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="Confirme" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="Annuler" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
               </Group>
@@ -216,7 +216,7 @@
             <Property name="text" type="java.lang.String" value="N&#xb0; de chambre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="NumChambre">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -240,7 +240,7 @@
             <Property name="text" type="java.lang.String" value="N&#xb0; de bloc"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="NumBloc">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -264,7 +264,7 @@
             <Property name="text" type="java.lang.String" value="N&#xb0; de &#xe9;tage"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="NumEtage">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -288,7 +288,7 @@
             <Property name="text" type="java.lang.String" value="Cat&#xe9;gorie"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="Categorie">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -312,7 +312,7 @@
             <Property name="text" type="java.lang.String" value="Nbr de lits"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="NbrLits">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -336,7 +336,7 @@
             <Property name="text" type="java.lang.String" value="Prix de chambre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
+        <Component class="javax.swing.JTextField" name="Prix">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f9" red="fa" type="rgb"/>
@@ -349,7 +349,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="BCllient">
+        <Component class="javax.swing.JButton" name="Confirme">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -366,14 +366,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BCllientFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BCllientFocusLost"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BCllientMouseClicked"/>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BCllientMousePressed"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BCllientActionPerformed"/>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ConfirmeMouseMoved"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ConfirmeFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ConfirmeFocusLost"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConfirmeMouseClicked"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConfirmeMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="BChambre">
+        <Component class="javax.swing.JButton" name="Annuler">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -390,9 +391,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BChambreFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BChambreFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BChambreActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AnnulerFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AnnulerFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnnulerActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

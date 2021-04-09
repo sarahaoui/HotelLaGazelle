@@ -5,6 +5,8 @@
  */
 package HotelPackage;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -16,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Chambre extends javax.swing.JFrame {
 Connection cnx=null;
+ public String SelectNumChambre;
+ public int click=0;
     /**
      * Creates new form Chambre
      */
@@ -23,6 +27,16 @@ Connection cnx=null;
         setUndecorated(true);
         setResizable(false);
         initComponents();
+        jTable1.getTableHeader().setFont(new Font ("Bell MT",Font.BOLD,16));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(250,249,248));
+        jTable1.getTableHeader().setForeground(new Color(2,5,8));
+        jTable1.setRowHeight(25);
+        
+        //remplir la table 
+        updatetable();
+        
+       
         
     }
 
@@ -171,7 +185,7 @@ Connection cnx=null;
 
         jTable1.setBackground(new java.awt.Color(250, 249, 248));
         jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 186, 162), new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jTable1.setForeground(new java.awt.Color(2, 5, 8));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,9 +195,14 @@ Connection cnx=null;
                 "N°Chambre", "N°Bloc", "N°Etage", "Catégorie", "Nbr Lits", "Prix", "Disponible"
             }
         ));
+        jTable1.setFocusable(false);
         jTable1.setGridColor(new java.awt.Color(2, 5, 8));
+        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(2, 5, 8));
-        jTable1.setSelectionForeground(new java.awt.Color(250, 147, 109));
+        jTable1.setSelectionForeground(new java.awt.Color(250, 249, 248));
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -199,8 +218,8 @@ Connection cnx=null;
                 .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -211,9 +230,9 @@ Connection cnx=null;
                     .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(458, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
@@ -248,7 +267,30 @@ Connection cnx=null;
     }//GEN-LAST:event_BsupprimerMousePressed
 
     private void BsupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsupprimerActionPerformed
-        // TODO add your handling code here:
+
+        int ligne =0;
+        ligne=jTable1.getSelectedRow();
+        // recupere les elements
+        String NumChambre =jTable1.getValueAt(ligne,0).toString();
+     
+           try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="delete from chambre where NumChambre="+NumChambre+";";
+            st.executeUpdate(SQL); 
+            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            this.dispose();
+            new Chambre().setVisible(true);
+           
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+           updatetable();
+        
+        
+        
     }//GEN-LAST:event_BsupprimerActionPerformed
 
     private void BNouveauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveauFocusGained
@@ -260,42 +302,13 @@ Connection cnx=null;
     }//GEN-LAST:event_BNouveauFocusLost
 
     private void BNouveauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BNouveauMousePressed
-      //  new FicheChambres().setVisible(true);
+       
 
     }//GEN-LAST:event_BNouveauMousePressed
 
     private void BNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveauActionPerformed
-       try{
-           Class.forName("com.mysql.jdbc.Driver");
-            System.err.println("connected");
-            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
-            Statement st =cnx.createStatement();
-            //requete
-            String SQL="select * from chambre";
-            ResultSet rs= st.executeQuery(SQL);
-            while(rs.next()){
-                //add data until finish
-                String Numchambre=String.valueOf(rs.getInt("NumChambre"));
-                String Numbloc=String.valueOf(rs.getInt("NumBloc"));
-                String Numetage=String.valueOf(rs.getInt("NumEtage"));
-                String catégorie=String.valueOf(rs.getString("Catégorie"));
-                String Nbrlits=String.valueOf(rs.getInt("NbrLits"));
-                String prix=String.valueOf(rs.getDouble("PrixChambre"));
-                String Dispo=String.valueOf(rs.getBoolean("Disponible"));
-                
-                //store in table
-                
-                String Table[]={Numchambre,Numbloc,Numetage,catégorie,Nbrlits,prix,Dispo};
-                DefaultTableModel tbModel= (DefaultTableModel)jTable1.getModel();
-               
-                tbModel.addRow(Table);
-            }
-            cnx.close();
-            
-        }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}
-       
-       
+     // add new chambre       
+       new FicheChambres().setVisible(true);
     }//GEN-LAST:event_BNouveauActionPerformed
 
     private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
@@ -307,11 +320,18 @@ Connection cnx=null;
     }//GEN-LAST:event_BFicheFocusLost
 
     private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
-        // TODO add your handling code here:
+          int ligne =0;
+        click=1;
+        ligne=jTable1.getSelectedRow();
+        // recupere les elements
+         SelectNumChambre =jTable1.getValueAt(ligne,0).toString();
+         new FicheChambres().setVisible(true);
     }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
-        // TODO add your handling code here:
+      
+        
+     
     }//GEN-LAST:event_BFicheActionPerformed
 
     /**
@@ -347,6 +367,37 @@ Connection cnx=null;
                 new Chambre().setVisible(true);
             }
         });
+    }
+    public void updatetable(){
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select * from chambre";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                //add data until finish
+                String Numchambre=String.valueOf(rs.getInt("NumChambre"));
+                String Numbloc=String.valueOf(rs.getInt("NumBloc"));
+                String Numetage=String.valueOf(rs.getInt("NumEtage"));
+                String catégorie=String.valueOf(rs.getString("Categorie"));
+                String Nbrlits=String.valueOf(rs.getInt("NbrLits"));
+                String prix=String.valueOf(rs.getDouble("PrixChambre"));
+                String Dispo=String.valueOf(rs.getBoolean("Disponible"));
+                
+                //store in table
+                
+                String Table[]={Numchambre,Numbloc,Numetage,catégorie,Nbrlits,prix,Dispo};
+                DefaultTableModel tbModel= (DefaultTableModel)jTable1.getModel();
+               
+                tbModel.addRow(Table);
+            }
+            cnx.close();
+            
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
