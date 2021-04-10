@@ -61,13 +61,16 @@ public class Modifierchambre extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 236, 228));
         jLabel1.setText("Chambre");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(21, 14, 109, 32);
 
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Crash.AMOULA-PC\\Desktop\\HotelLaGazelle\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -81,31 +84,13 @@ public class Modifierchambre extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1195, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1);
+        jButton1.setBounds(1325, 14, 24, 25);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 60));
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 248));
+        jPanel2.setLayout(null);
 
         BModifier.setBackground(new java.awt.Color(0, 0, 0));
         BModifier.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -130,58 +115,86 @@ public class Modifierchambre extends javax.swing.JFrame {
                 BModifierActionPerformed(evt);
             }
         });
+        jPanel2.add(BModifier);
+        BModifier.setBounds(1137, 521, 158, 43);
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(2, 5, 8));
         jLabel20.setText("Num chambre ");
+        jPanel2.add(jLabel20);
+        jLabel20.setBounds(79, 81, 133, 25);
 
         jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(2, 5, 8));
         jLabel17.setText("N° de chambre");
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(163, 207, 134, 25);
 
         NumChambre.setBackground(new java.awt.Color(250, 249, 248));
         NumChambre.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumChambre.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(NumChambre);
+        NumChambre.setBounds(339, 202, 270, 38);
 
         jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(2, 5, 8));
         jLabel18.setText("N° de bloc");
+        jPanel2.add(jLabel18);
+        jLabel18.setBounds(163, 270, 94, 25);
 
         NumBloc.setBackground(new java.awt.Color(250, 249, 248));
         NumBloc.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumBloc.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(NumBloc);
+        NumBloc.setBounds(339, 265, 270, 38);
 
         jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(2, 5, 8));
         jLabel19.setText("N° de étage");
+        jPanel2.add(jLabel19);
+        jLabel19.setBounds(163, 336, 105, 25);
 
         NumEtage.setBackground(new java.awt.Color(250, 249, 248));
         NumEtage.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumEtage.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(NumEtage);
+        NumEtage.setBounds(339, 331, 270, 38);
 
         jLabel21.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(2, 5, 8));
         jLabel21.setText("Catégorie");
+        jPanel2.add(jLabel21);
+        jLabel21.setBounds(748, 207, 88, 25);
 
         Categorie1.setBackground(new java.awt.Color(250, 249, 248));
         Categorie1.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         Categorie1.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(Categorie1);
+        Categorie1.setBounds(918, 202, 270, 38);
 
         jLabel22.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(2, 5, 8));
         jLabel22.setText("Nbr de lits");
+        jPanel2.add(jLabel22);
+        jLabel22.setBounds(748, 270, 97, 25);
 
         NbrLits.setBackground(new java.awt.Color(250, 249, 248));
         NbrLits.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NbrLits.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(NbrLits);
+        NbrLits.setBounds(918, 265, 270, 38);
 
         jLabel23.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(2, 5, 8));
         jLabel23.setText("Prix de chambre");
+        jPanel2.add(jLabel23);
+        jLabel23.setBounds(748, 336, 150, 25);
 
         Prix.setBackground(new java.awt.Color(250, 249, 248));
         Prix.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         Prix.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(Prix);
+        Prix.setBounds(916, 331, 270, 38);
 
         jComboBox1.setBackground(new java.awt.Color(153, 153, 153));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -191,79 +204,8 @@ public class Modifierchambre extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(165, 165, 165))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel20)
-                        .addGap(35, 35, 35)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19))
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NumChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NumBloc, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(139, 139, 139)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NbrLits, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel21)
-                                    .addGap(82, 82, 82)
-                                    .addComponent(Categorie1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addGap(18, 18, 18)
-                                .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(272, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(NumChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21)
-                    .addComponent(Categorie1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(NumBloc, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22)
-                    .addComponent(NbrLits, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23)
-                    .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addComponent(BModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(396, 396, 396))
-        );
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(247, 76, 258, 36);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
