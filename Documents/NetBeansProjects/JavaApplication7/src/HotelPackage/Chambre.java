@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -58,6 +59,12 @@ Connection cnx=null;
         BFiche = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Bchercher = new javax.swing.JButton();
+        RechercheFiled = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        disponibilite = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,6 +169,7 @@ Connection cnx=null;
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
+        BFiche.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\update.png")); // NOI18N
         BFiche.setText(" Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -205,34 +213,118 @@ Connection cnx=null;
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
+        Bchercher.setBackground(new java.awt.Color(250,249,248));
+        Bchercher.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Bchercher.setForeground(new java.awt.Color(2,5,8));
+        Bchercher.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\chercher.png")); // NOI18N
+        Bchercher.setPreferredSize(new java.awt.Dimension(150, 52));
+        Bchercher.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BchercherFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BchercherFocusLost(evt);
+            }
+        });
+        Bchercher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BchercherMousePressed(evt);
+            }
+        });
+        Bchercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BchercherActionPerformed(evt);
+            }
+        });
+
+        RechercheFiled.setBackground(new java.awt.Color(250, 250, 250));
+        RechercheFiled.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        RechercheFiled.setForeground(new java.awt.Color(2, 5, 8));
+
+        jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel18.setText("Recherche par");
+
+        jComboBox.setBackground(new java.awt.Color(153, 153, 153));
+        jComboBox.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jComboBox.setForeground(new java.awt.Color(2, 5, 8));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NumChambre", "NumBloc", "NumEtage", "Categorie", "NbrLits", "PrixChambre", " " }));
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel19.setText("Disponibilité");
+
+        disponibilite.setBackground(new java.awt.Color(153, 153, 153));
+        disponibilite.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        disponibilite.setForeground(new java.awt.Color(2, 5, 8));
+        disponibilite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "true", "false", " " }));
+        disponibilite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disponibiliteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(818, Short.MAX_VALUE)
-                .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(164, 164, 164))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(23, 23, 23)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(disponibilite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox, 0, 203, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(disponibilite, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
@@ -328,6 +420,65 @@ Connection cnx=null;
         // TODO add your handling code here:
     }//GEN-LAST:event_BFicheFocusGained
 
+    private void BchercherFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusGained
+
+    private void BchercherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusLost
+
+    private void BchercherMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BchercherMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherMousePressed
+
+    private void BchercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BchercherActionPerformed
+        
+       String id= jComboBox.getSelectedItem().toString();
+       String recherche= RechercheFiled.getText().toString();
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select * from chambre where"+"\""+jComboBox.getSelectedItem().toString()+"\""+"="+"\""+RechercheFiled.getText().toString()+"\""+ ";";
+            ResultSet rs= st.executeQuery(SQL);
+            int nbrrow= rs.getRow();
+            if(nbrrow==0){
+                JOptionPane.showMessageDialog(null, "Mouvaise recherche");
+            }else{
+           jTable1.setModel(DbUtils.resultSetToTableModel(rs));}
+            
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+    }//GEN-LAST:event_BchercherActionPerformed
+
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxActionPerformed
+
+    private void disponibiliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibiliteActionPerformed
+        String dispo= disponibilite.getSelectedItem().toString();
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select * from chambre where Disponible ="+1+";";
+            ResultSet rs= st.executeQuery(SQL);
+            int nbrrow= rs.getRow();
+            if(nbrrow==0){
+                JOptionPane.showMessageDialog(null, "Mouvaise recherche");
+            }else{
+           jTable1.setModel(DbUtils.resultSetToTableModel(rs));}
+            
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+        
+    }//GEN-LAST:event_disponibiliteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,9 +548,15 @@ Connection cnx=null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BFiche;
     private javax.swing.JButton BNouveau;
+    private javax.swing.JButton Bchercher;
     private javax.swing.JButton Bsupprimer;
+    private javax.swing.JTextField RechercheFiled;
+    private javax.swing.JComboBox<String> disponibilite;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
