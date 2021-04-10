@@ -67,7 +67,7 @@ public class Réservation extends javax.swing.JFrame {
         jLabel1.setText("Réservation");
 
         jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/exitpng.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -166,7 +166,7 @@ public class Réservation extends javax.swing.JFrame {
         BNouveau.setBackground(new java.awt.Color(250, 249, 248));
         BNouveau.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BNouveau.setForeground(new java.awt.Color(2, 5, 8));
-        BNouveau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/chercher.png"))); // NOI18N
+        BNouveau.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\chercher.png")); // NOI18N
         BNouveau.setText(" Chercher");
         BNouveau.setPreferredSize(new java.awt.Dimension(150, 52));
         BNouveau.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -191,7 +191,7 @@ public class Réservation extends javax.swing.JFrame {
         BNouveau1.setBackground(new java.awt.Color(250, 249, 248));
         BNouveau1.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BNouveau1.setForeground(new java.awt.Color(2, 5, 8));
-        BNouveau1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/add-friend.png"))); // NOI18N
+        BNouveau1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\add-friend.png")); // NOI18N
         BNouveau1.setText(" Créer un nouveau client");
         BNouveau1.setPreferredSize(new java.awt.Dimension(150, 52));
         BNouveau1.addFocusListener(new java.awt.event.FocusAdapter() {

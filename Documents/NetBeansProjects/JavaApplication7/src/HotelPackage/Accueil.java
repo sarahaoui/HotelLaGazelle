@@ -50,7 +50,7 @@ public class Accueil extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(2, 5, 8,255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1469, 180));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/Group 26.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\Group 26.png")); // NOI18N
 
         Bstatistiques.setBackground(new java.awt.Color(2, 5, 8,0));
         Bstatistiques.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -173,7 +173,7 @@ public class Accueil extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/exitpng.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -233,7 +233,7 @@ public class Accueil extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 190));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/hotel8 1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\hotel8 1.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1020));
 
         pack();

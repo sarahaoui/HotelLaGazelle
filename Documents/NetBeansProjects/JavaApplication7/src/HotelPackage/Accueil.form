@@ -99,7 +99,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/HotelPackage/Group 26.png"/>
+              <Image iconType="2" name="C:\Users\pc-click\Documents\NetBeansProjects\HotelLaGazellee\Documents\NetBeansProjects\JavaApplication7\src\HotelPackage\Group 26.png"/>
             </Property>
           </Properties>
         </Component>
@@ -243,7 +243,7 @@
               <Connection code="new java.awt.Color(2, 5, 8,0)" type="code"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/HotelPackage/exitpng.png"/>
+              <Image iconType="2" name="C:\Users\pc-click\Documents\NetBeansProjects\HotelLaGazellee\Documents\NetBeansProjects\JavaApplication7\src\HotelPackage\exitpng.png"/>
             </Property>
           </Properties>
           <Events>
@@ -256,7 +256,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/HotelPackage/hotel8 1.png"/>
+          <Image iconType="2" name="C:\Users\pc-click\Documents\NetBeansProjects\HotelLaGazellee\Documents\NetBeansProjects\JavaApplication7\src\HotelPackage\hotel8 1.png"/>
         </Property>
       </Properties>
       <Constraints>
