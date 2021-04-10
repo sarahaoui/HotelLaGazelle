@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package HotelPackage;
 
 import java.awt.Color;
@@ -12,10 +8,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author pc-click
- */
+
 public class Chambre extends javax.swing.JFrame {
 Connection cnx=null;
  public String SelectNumChambre;

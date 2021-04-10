@@ -410,8 +410,8 @@
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BCllientFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="BCllientFocusLost"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BCllientMouseClicked"/>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BCllientMousePressed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BCllientMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BCllientActionPerformed"/>
           </Events>
           <Constraints>
@@ -466,12 +466,13 @@
         <Component class="javax.swing.JComboBox" name="CtgCh">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
+              <StringArray count="6">
                 <StringItem index="0" value="OPEN"/>
                 <StringItem index="1" value="Standard"/>
                 <StringItem index="2" value="Standard vue Mer"/>
                 <StringItem index="3" value="Deluxe vue Jardin"/>
                 <StringItem index="4" value="Deluxe vue Mer"/>
+                <StringItem index="5" value="Suite"/>
               </StringArray>
             </Property>
           </Properties>
@@ -511,14 +512,18 @@
         <Component class="javax.swing.JComboBox" name="jComboBox3">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="5">
+                <StringItem index="0" value="OPEN"/>
+                <StringItem index="1" value="Aouina Sarah"/>
+                <StringItem index="2" value="Amrouni Yasmine"/>
+                <StringItem index="3" value="saraaaah"/>
+                <StringItem index="4" value="ysmn"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

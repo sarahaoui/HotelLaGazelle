@@ -240,11 +240,11 @@ public class Réservation extends javax.swing.JFrame {
             }
         });
         BCllient.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BCllientMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BCllientMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BCllientMouseClicked(evt);
             }
         });
         BCllient.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +282,7 @@ public class Réservation extends javax.swing.JFrame {
         Nsalle.add(CatégorieCham);
         CatégorieCham.setBounds(760, 310, 197, 40);
 
-        CtgCh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OPEN", "Standard", "Standard vue Mer", "Deluxe vue Jardin", "Deluxe vue Mer" }));
+        CtgCh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OPEN", "Standard", "Standard vue Mer", "Deluxe vue Jardin", "Deluxe vue Mer", "Suite" }));
         CtgCh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CtgChActionPerformed(evt);
@@ -295,7 +295,12 @@ public class Réservation extends javax.swing.JFrame {
         Nsalle.add(NumSalle);
         NumSalle.setBounds(310, 310, 278, 38);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OPEN", "Aouina Sarah", "Amrouni Yasmine", "saraaaah", "ysmn" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
         Nsalle.add(jComboBox3);
         jComboBox3.setBounds(403, 494, 527, 35);
 
@@ -429,6 +434,10 @@ public class Réservation extends javax.swing.JFrame {
     private void CtgChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CtgChActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CtgChActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+       
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments
