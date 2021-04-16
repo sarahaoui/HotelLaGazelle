@@ -91,18 +91,19 @@ public class Facture extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         Prenom = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        IDf = new javax.swing.JTextField();
         clt = new javax.swing.JComboBox<>();
         BCllient1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         BNouveau1 = new javax.swing.JButton();
         Bsupprimer1 = new javax.swing.JButton();
@@ -110,6 +111,8 @@ public class Facture extends javax.swing.JFrame {
         ID = new javax.swing.JLabel();
         dd = new javax.swing.JLabel();
         fact = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -222,11 +225,11 @@ public class Facture extends javax.swing.JFrame {
             }
         });
         BFiche.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BFicheMousePressed(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BFicheMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BFicheMousePressed(evt);
             }
         });
         BFiche.addActionListener(new java.awt.event.ActionListener() {
@@ -263,7 +266,7 @@ public class Facture extends javax.swing.JFrame {
         jScrollPane3.setBounds(10, 30, 580, 150);
 
         jPanel2.add(jPanel18);
-        jPanel18.setBounds(660, 230, 600, 210);
+        jPanel18.setBounds(660, 220, 600, 210);
 
         jPanel9.setBackground(new java.awt.Color(250, 249, 248));
         jPanel9.setLayout(null);
@@ -288,7 +291,7 @@ public class Facture extends javax.swing.JFrame {
         jScrollPane2.setBounds(10, 30, 577, 149);
 
         jPanel2.add(jPanel9);
-        jPanel9.setBounds(50, 230, 601, 210);
+        jPanel9.setBounds(50, 220, 601, 210);
 
         jPanel5.setBackground(new java.awt.Color(250, 249, 248));
         jPanel5.setLayout(null);
@@ -309,7 +312,7 @@ public class Facture extends javax.swing.JFrame {
         Nom.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         Nom.setOpaque(true);
         jPanel5.add(Nom);
-        Nom.setBounds(150, 60, 170, 30);
+        Nom.setBounds(150, 60, 90, 30);
 
         jPanel12.setBackground(new java.awt.Color(244, 240, 235));
 
@@ -359,12 +362,6 @@ public class Facture extends javax.swing.JFrame {
         jPanel5.add(jPanel14);
         jPanel14.setBounds(750, 60, 200, 30);
 
-        jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(2, 5, 8));
-        jLabel17.setText("Nom");
-        jPanel5.add(jLabel17);
-        jLabel17.setBounds(30, 60, 56, 30);
-
         jPanel16.setBackground(new java.awt.Color(244, 240, 235));
 
         jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -392,15 +389,24 @@ public class Facture extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(244, 240, 235));
 
+        jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel17.setText("Nom");
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel17)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.add(jPanel15);
@@ -410,19 +416,53 @@ public class Facture extends javax.swing.JFrame {
         Prenom.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         Prenom.setOpaque(true);
         jPanel5.add(Prenom);
-        Prenom.setBounds(520, 60, 170, 30);
+        Prenom.setBounds(520, 60, 100, 30);
 
-        clt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OPEN" }));
+        jPanel19.setBackground(new java.awt.Color(244, 240, 235));
+
+        jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel20.setText("ID Facture");
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel5.add(jPanel19);
+        jPanel19.setBounds(560, 10, 120, 30);
+
+        IDf.setBackground(new java.awt.Color(250, 249, 248));
+        IDf.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        IDf.setForeground(new java.awt.Color(2, 5, 8));
+        IDf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IDfKeyTyped(evt);
+            }
+        });
+        jPanel5.add(IDf);
+        IDf.setBounds(710, 10, 120, 27);
+
         clt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cltActionPerformed(evt);
             }
         });
         jPanel5.add(clt);
-        clt.setBounds(200, 10, 211, 30);
+        clt.setBounds(160, 10, 211, 30);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(72, 19, 1130, 110);
+        jPanel5.setBounds(52, 19, 1210, 110);
 
         BCllient1.setBackground(new java.awt.Color(0, 0, 0));
         BCllient1.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -469,20 +509,7 @@ public class Facture extends javax.swing.JFrame {
         jLabel5.setBounds(28, 12, 189, 23);
 
         jPanel2.add(jPanel10);
-        jPanel10.setBounds(660, 180, 601, 45);
-
-        jPanel13.setBackground(new java.awt.Color(250, 249, 248));
-        jPanel13.setPreferredSize(new java.awt.Dimension(744, 35));
-        jPanel13.setLayout(null);
-
-        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(2, 5, 8));
-        jLabel6.setText("Consommation Produit");
-        jPanel13.add(jLabel6);
-        jLabel6.setBounds(28, 12, 205, 23);
-
-        jPanel2.add(jPanel13);
-        jPanel13.setBounds(50, 180, 601, 45);
+        jPanel10.setBounds(660, 160, 601, 45);
 
         jPanel17.setBackground(new java.awt.Color(250, 249, 248));
         jPanel17.setPreferredSize(new java.awt.Dimension(744, 35));
@@ -556,11 +583,11 @@ public class Facture extends javax.swing.JFrame {
             }
         });
         BFiche1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BFiche1MousePressed(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BFiche1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BFiche1MousePressed(evt);
             }
         });
         BFiche1.addActionListener(new java.awt.event.ActionListener() {
@@ -584,6 +611,19 @@ public class Facture extends javax.swing.JFrame {
         dd.setBounds(70, 590, 80, 15);
         jPanel2.add(fact);
         fact.setBounds(130, 550, 34, 15);
+
+        jPanel20.setBackground(new java.awt.Color(250, 249, 248));
+        jPanel20.setPreferredSize(new java.awt.Dimension(744, 35));
+        jPanel20.setLayout(null);
+
+        jLabel7.setFont(new java.awt.Font("Bell MT", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel7.setText("Consommation Produit");
+        jPanel20.add(jLabel7);
+        jLabel7.setBounds(28, 12, 205, 23);
+
+        jPanel2.add(jPanel20);
+        jPanel20.setBounds(50, 160, 601, 45);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -766,35 +806,6 @@ try{
         this.dispose();
     }//GEN-LAST:event_BFiche1ActionPerformed
 
-    private void cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cltActionPerformed
-       String Client= clt.getSelectedItem().toString();
-        try{
-      
-
-                Class.forName("com.mysql.jdbc.Driver");
-            System.err.println("connected");
-            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
-            Statement st =cnx.createStatement();
-            String SQL = "SELECT `Nom`, `Prenom` FROM `clientt` WHERE Id_client ="+Client+ "";
-             ResultSet rs= st.executeQuery(SQL);
-            while(rs.next()){
-                String NomClient = String.valueOf(rs.getString("Nom"));
-                String PrenomClient = String.valueOf(rs.getString("Prenom"));
-                
-                Nom.setText(NomClient);
-                Prenom.setText(PrenomClient);
-                ShowDate();
-                
-
-             
-
-         }}
-            catch(Exception ex){
-                JOptionPane.showMessageDialog(null,ex);
-            }
-        
-    }//GEN-LAST:event_cltActionPerformed
-
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         try {  int i=table1.getSelectedRow();
             deplace(i);
@@ -810,6 +821,37 @@ try{
         }
         catch (Exception e){JOptionPane.showMessageDialog(null,"erreur selectionne\n"+e.getMessage());  }         
     }//GEN-LAST:event_table2MouseClicked
+
+    private void cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cltActionPerformed
+        String Client= clt.getSelectedItem().toString();
+        try{
+
+            Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            String SQL = "SELECT `Nom`, `Prenom` FROM `clientt` WHERE Id_client ="+Client+ "";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                String NomClient = String.valueOf(rs.getString("Nom"));
+                String PrenomClient = String.valueOf(rs.getString("Prenom"));
+
+                Nom.setText(NomClient);
+                Prenom.setText(PrenomClient);
+                ShowDate();
+
+            }}
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex);
+            }
+        
+    }//GEN-LAST:event_cltActionPerformed
+
+    private void IDfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDfKeyTyped
+        char text= evt.getKeyChar();
+        if(!(Character.isDigit(text))){
+            evt.consume();}
+    }//GEN-LAST:event_IDfKeyTyped
 
       public void updatecombox(){
     
@@ -830,7 +872,8 @@ try{
         }catch(Exception e){
         JOptionPane.showMessageDialog(null, e);}
     }
-    
+    ///////////////////////////////////////////////////
+      
     /////////////////////////////////
       
         
@@ -914,6 +957,7 @@ try{
     private javax.swing.JButton Bsupprimer;
     private javax.swing.JButton Bsupprimer1;
     private javax.swing.JLabel ID;
+    private javax.swing.JTextField IDf;
     private javax.swing.JLabel Nom;
     private javax.swing.JLabel Prenom;
     private javax.swing.JComboBox<String> clt;
@@ -925,21 +969,23 @@ try{
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
