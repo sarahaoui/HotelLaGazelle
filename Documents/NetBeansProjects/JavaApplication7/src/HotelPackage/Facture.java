@@ -30,6 +30,7 @@ public class Facture extends javax.swing.JFrame {
         showTableDataa();
         this.dd.setVisible(false);
         this.ID.setVisible(false);
+        this.fact.setVisible(false);
         
     }
     
@@ -42,8 +43,10 @@ public class Facture extends javax.swing.JFrame {
     private void deplace(int i){
        try {     //i represente les ligne 
      
-       ID.setText(table1.getValueAt (i, 0).toString());
-       dd.setText(table1.getValueAt (i, 1).toString());
+       
+       fact.setText(table1.getValueAt (i, 0).toString());
+       ID.setText(table1.getValueAt (i, 1).toString());
+       dd.setText(table1.getValueAt (i, 2).toString());
       
        
        }catch (Exception e){ JOptionPane.showMessageDialog(null,"erreur de deplacement de message !!!!! "+e.getMessage());}
@@ -51,9 +54,10 @@ public class Facture extends javax.swing.JFrame {
     
     private void deplacee(int i){
        try {     //i represente les ligne 
-     
-       ID.setText(table2.getValueAt (i, 0).toString());
-       dd.setText(table2.getValueAt (i, 1).toString());
+       
+       fact.setText(table2.getValueAt (i, 0).toString());
+       ID.setText(table2.getValueAt (i, 1).toString());
+       dd.setText(table2.getValueAt (i, 2).toString());
       
        
        }catch (Exception e){ JOptionPane.showMessageDialog(null,"erreur de deplacement de message !!!!! "+e.getMessage());}
@@ -105,6 +109,7 @@ public class Facture extends javax.swing.JFrame {
         BFiche1 = new javax.swing.JButton();
         ID = new javax.swing.JLabel();
         dd = new javax.swing.JLabel();
+        fact = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -244,7 +249,7 @@ public class Facture extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IDAppel", "Duree", "Prix"
+                "ID Facture", "IDAppel", "Duree", "Prix"
             }
         ));
         table2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -269,7 +274,7 @@ public class Facture extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IDProduit", "Quantite", "Prix"
+                "ID Facture", "IDProduit", "Quantite", "Prix"
             }
         ));
         table1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -577,6 +582,8 @@ public class Facture extends javax.swing.JFrame {
         dd.setText("jLabel2");
         jPanel2.add(dd);
         dd.setBounds(70, 590, 80, 15);
+        jPanel2.add(fact);
+        fact.setBounds(130, 550, 34, 15);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -630,13 +637,15 @@ public class Facture extends javax.swing.JFrame {
 
     private void BsupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsupprimerActionPerformed
 try{
-            String sql = " DELETE FROM `consommationappels` WHERE IDAppel = ? AND duree=?";
+            String sql = " DELETE FROM `consommationappels` WHERE IDAppel = ? AND IDFacture=? AND duree=?";
 
             Class.forName("com.mysql.jdbc.Driver");
             con= DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root","");
             pst =con.prepareStatement(sql);
-            pst.setString(1,ID.getText());
-            pst.setString(2,dd.getText());
+            pst.setString(1,fact.getText());
+            pst.setString(2,ID.getText());
+            pst.setString(3,dd.getText());
+           
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Supprimer avec succès");
         }
@@ -719,13 +728,14 @@ try{
 
     private void Bsupprimer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bsupprimer1ActionPerformed
         try{
-            String sql = " DELETE FROM `consommationproduits` WHERE IDproduit = ? AND quantite= ?";
+            String sql = " DELETE FROM `consommationproduits` WHERE  IDFacture=?  AND IDproduit = ? AND quantite= ?";
 
             Class.forName("com.mysql.jdbc.Driver");
             con= DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root","");
             pst =con.prepareStatement(sql);
-            pst.setString(1,ID.getText());
-            pst.setString(2,dd.getText());
+            pst.setString(1,fact.getText());
+            pst.setString(2,ID.getText());
+            pst.setString(3,dd.getText());  
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Supprimer avec succès");
         }
@@ -829,7 +839,7 @@ try{
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root",""); 
        
-      String sql =   "SELECT IDproduit, quantite,prixTotal FROM  consommationproduits ";
+      String sql =   "SELECT IDFacture,IDproduit,quantite,prixTotal FROM  consommationproduits ";
   
           pst =con.prepareStatement(sql);
           rs= pst.executeQuery();
@@ -845,7 +855,7 @@ try{
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root",""); 
       
-      String sql =   "SELECT IDAppel, duree,prixTotal FROM  consommationappels ";
+      String sql =   "SELECT 	IDFacture,IDAppel, duree,prixTotal FROM  consommationappels ";
   
           pst =con.prepareStatement(sql);
           rs= pst.executeQuery();
@@ -909,6 +919,7 @@ try{
     private javax.swing.JComboBox<String> clt;
     private javax.swing.JLabel date;
     private javax.swing.JLabel dd;
+    private javax.swing.JLabel fact;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
