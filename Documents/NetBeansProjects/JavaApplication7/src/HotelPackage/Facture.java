@@ -28,7 +28,11 @@ public class Facture extends javax.swing.JFrame {
         updatecombox();
         showTableData();
         showTableDataa();
+        this.dd.setVisible(false);
+        this.ID.setVisible(false);
+        
     }
+    
     void ShowDate(){
     Date d = new Date();
     SimpleDateFormat s = new SimpleDateFormat ("dd-MM-yyyy");
@@ -39,6 +43,7 @@ public class Facture extends javax.swing.JFrame {
        try {     //i represente les ligne 
      
        ID.setText(table1.getValueAt (i, 0).toString());
+       dd.setText(table1.getValueAt (i, 1).toString());
       
        
        }catch (Exception e){ JOptionPane.showMessageDialog(null,"erreur de deplacement de message !!!!! "+e.getMessage());}
@@ -48,6 +53,7 @@ public class Facture extends javax.swing.JFrame {
        try {     //i represente les ligne 
      
        ID.setText(table2.getValueAt (i, 0).toString());
+       dd.setText(table2.getValueAt (i, 1).toString());
       
        
        }catch (Exception e){ JOptionPane.showMessageDialog(null,"erreur de deplacement de message !!!!! "+e.getMessage());}
@@ -98,6 +104,7 @@ public class Facture extends javax.swing.JFrame {
         Bsupprimer1 = new javax.swing.JButton();
         BFiche1 = new javax.swing.JButton();
         ID = new javax.swing.JLabel();
+        dd = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -210,11 +217,11 @@ public class Facture extends javax.swing.JFrame {
             }
         });
         BFiche.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BFicheMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BFicheMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BFicheMouseClicked(evt);
             }
         });
         BFiche.addActionListener(new java.awt.event.ActionListener() {
@@ -444,7 +451,7 @@ public class Facture extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(250, 249, 248));
         jPanel11.setLayout(null);
         jPanel2.add(jPanel11);
-        jPanel11.setBounds(660, 230, 601, 210);
+        jPanel11.setBounds(660, 230, 0, 210);
 
         jPanel10.setBackground(new java.awt.Color(250, 249, 248));
         jPanel10.setPreferredSize(new java.awt.Dimension(744, 35));
@@ -544,11 +551,11 @@ public class Facture extends javax.swing.JFrame {
             }
         });
         BFiche1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BFiche1MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BFiche1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BFiche1MouseClicked(evt);
             }
         });
         BFiche1.addActionListener(new java.awt.event.ActionListener() {
@@ -566,6 +573,10 @@ public class Facture extends javax.swing.JFrame {
 
         jPanel2.add(jPanel17);
         jPanel17.setBounds(50, 450, 601, 45);
+
+        dd.setText("jLabel2");
+        jPanel2.add(dd);
+        dd.setBounds(70, 590, 80, 15);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -619,12 +630,13 @@ public class Facture extends javax.swing.JFrame {
 
     private void BsupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsupprimerActionPerformed
 try{
-            String sql = " DELETE FROM `consommationappels` WHERE IDAppel = ?";
+            String sql = " DELETE FROM `consommationappels` WHERE IDAppel = ? AND duree=?";
 
             Class.forName("com.mysql.jdbc.Driver");
             con= DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root","");
             pst =con.prepareStatement(sql);
             pst.setString(1,ID.getText());
+            pst.setString(2,dd.getText());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Supprimer avec succès");
         }
@@ -707,12 +719,13 @@ try{
 
     private void Bsupprimer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bsupprimer1ActionPerformed
         try{
-            String sql = " DELETE FROM `consommationproduits` WHERE IDproduit = ?";
+            String sql = " DELETE FROM `consommationproduits` WHERE IDproduit = ? AND quantite= ?";
 
             Class.forName("com.mysql.jdbc.Driver");
             con= DriverManager.getConnection("jdbc:mysql://localhost/hotellagazelle","root","");
             pst =con.prepareStatement(sql);
             pst.setString(1,ID.getText());
+            pst.setString(2,dd.getText());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Supprimer avec succès");
         }
@@ -895,6 +908,7 @@ try{
     private javax.swing.JLabel Prenom;
     private javax.swing.JComboBox<String> clt;
     private javax.swing.JLabel date;
+    private javax.swing.JLabel dd;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;

@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 public class ModifierConsoProduit extends javax.swing.JFrame {
             Connection con = null;
             PreparedStatement pst = null;
@@ -26,7 +25,6 @@ public class ModifierConsoProduit extends javax.swing.JFrame {
         updatecomboxx();
        
     }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

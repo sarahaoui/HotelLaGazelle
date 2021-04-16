@@ -11,7 +11,6 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 public class AddConsoProduit extends javax.swing.JFrame {
             Connection con = null;
             PreparedStatement pst = null;
