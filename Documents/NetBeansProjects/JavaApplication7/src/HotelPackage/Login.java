@@ -29,10 +29,7 @@ public class Login extends javax.swing.JFrame {
        
         
     }
-    
-    
-    
-   
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -231,6 +228,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BCllient1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCllient1ActionPerformed
+ 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.err.println("connected");
@@ -286,7 +284,8 @@ if (Check.isSelected()){
     }//GEN-LAST:event_CheckActionPerformed
 
     private void a3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a3MouseClicked
-       
+        new recuperer().setVisible(true);
+        this.dispose();       
     }//GEN-LAST:event_a3MouseClicked
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
