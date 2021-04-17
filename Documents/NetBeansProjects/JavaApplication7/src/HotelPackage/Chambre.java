@@ -18,6 +18,7 @@ import net.proteanit.sql.DbUtils;
  * @author pc-click
  */
 public class Chambre extends javax.swing.JFrame {
+    PreparedStatement pst = null;
 Connection cnx=null;
  public String SelectNumChambre;
  public int click=0;
@@ -63,8 +64,7 @@ Connection cnx=null;
         RechercheFiled = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jComboBox = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        disponibilite = new javax.swing.JComboBox<>();
+        refresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,7 +169,7 @@ Connection cnx=null;
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
-        BFiche.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\update.png")); // NOI18N
+        BFiche.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\stylo.png")); // NOI18N
         BFiche.setText(" Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -192,7 +192,6 @@ Connection cnx=null;
         });
 
         jTable1.setBackground(new java.awt.Color(250, 249, 248));
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 186, 162), new java.awt.Color(0, 0, 0)));
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jTable1.setForeground(new java.awt.Color(2, 5, 8));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -200,7 +199,7 @@ Connection cnx=null;
 
             },
             new String [] {
-                "N°Chambre", "N°Bloc", "N°Etage", "Catégorie", "Nbr Lits", "Prix", "Disponible"
+                "N°Chambre", "N°Bloc", "N°Etage", "Catégorie", "Nbr Lits", "Prix"
             }
         ));
         jTable1.setFocusable(false);
@@ -245,8 +244,8 @@ Connection cnx=null;
         jLabel18.setForeground(new java.awt.Color(2, 5, 8));
         jLabel18.setText("Recherche par");
 
-        jComboBox.setBackground(new java.awt.Color(153, 153, 153));
-        jComboBox.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jComboBox.setBackground(new java.awt.Color(250, 249, 248));
+        jComboBox.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jComboBox.setForeground(new java.awt.Color(2, 5, 8));
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NumChambre", "NumBloc", "NumEtage", "Categorie", "NbrLits", "PrixChambre", " " }));
         jComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -255,17 +254,28 @@ Connection cnx=null;
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(2, 5, 8));
-        jLabel19.setText("Disponibilité");
-
-        disponibilite.setBackground(new java.awt.Color(153, 153, 153));
-        disponibilite.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        disponibilite.setForeground(new java.awt.Color(2, 5, 8));
-        disponibilite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "true", "false", " " }));
-        disponibilite.addActionListener(new java.awt.event.ActionListener() {
+        refresh.setBackground(new java.awt.Color(250, 249, 248));
+        refresh.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        refresh.setForeground(new java.awt.Color(2, 5, 8));
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\update.png")); // NOI18N
+        refresh.setText("refresh");
+        refresh.setPreferredSize(new java.awt.Dimension(150, 52));
+        refresh.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                refreshFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                refreshFocusLost(evt);
+            }
+        });
+        refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                refreshMousePressed(evt);
+            }
+        });
+        refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disponibiliteActionPerformed(evt);
+                refreshActionPerformed(evt);
             }
         });
 
@@ -276,32 +286,28 @@ Connection cnx=null;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(23, 23, 23)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(disponibilite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox, 0, 203, Short.MAX_VALUE))
-                        .addGap(42, 42, 42)
-                        .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1319, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(246, 246, 246)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(212, Short.MAX_VALUE))
+                                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,18 +319,15 @@ Connection cnx=null;
                         .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18)
                         .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(disponibilite, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(143, 143, 143)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
@@ -337,7 +340,7 @@ Connection cnx=null;
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        new Accueil().setVisible(true);
+       // new Accueil().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jButton1MousePressed
@@ -373,7 +376,7 @@ Connection cnx=null;
             //requete
             String SQL="delete from chambre where NumChambre="+NumChambre+";";
             st.executeUpdate(SQL); 
-            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            JOptionPane.showMessageDialog(null, "Supprimer avec succès");
             this.dispose();
             new Chambre().setVisible(true);
            
@@ -401,6 +404,7 @@ Connection cnx=null;
     private void BNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveauActionPerformed
      // add new chambre       
        new FicheChambres().setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_BNouveauActionPerformed
 
     private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
@@ -410,6 +414,7 @@ Connection cnx=null;
     private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
 
         new Modifierchambre().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusLost
@@ -436,48 +441,46 @@ Connection cnx=null;
         
        String id= jComboBox.getSelectedItem().toString();
        String recherche= RechercheFiled.getText().toString();
+      // int recherche2 = Integer.parseInt(recherche);
+      
         try{
            Class.forName("com.mysql.jdbc.Driver");
             System.err.println("connected");
             Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+           
             Statement st =cnx.createStatement();
-            //requete
-            String SQL="select * from chambre where"+"\""+jComboBox.getSelectedItem().toString()+"\""+"="+"\""+RechercheFiled.getText().toString()+"\""+ ";";
-            ResultSet rs= st.executeQuery(SQL);
-            int nbrrow= rs.getRow();
-            if(nbrrow==0){
-                JOptionPane.showMessageDialog(null, "Mouvaise recherche");
-            }else{
-           jTable1.setModel(DbUtils.resultSetToTableModel(rs));}
             
+            ResultSet rs= st.executeQuery("select * from chambre where "+id+"='"+recherche+"';");
+             if(!rs.isBeforeFirst()){
+                JOptionPane.showMessageDialog(this," La chambre n'existe pas !! ","Info",JOptionPane.INFORMATION_MESSAGE);
+                }
+              jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+             
+          
         }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}
+        JOptionPane.showMessageDialog(this, e,"Erreur",JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_BchercherActionPerformed
 
     private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
         
     }//GEN-LAST:event_jComboBoxActionPerformed
 
-    private void disponibiliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibiliteActionPerformed
-        String dispo= disponibilite.getSelectedItem().toString();
-        try{
-           Class.forName("com.mysql.jdbc.Driver");
-            System.err.println("connected");
-            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
-            Statement st =cnx.createStatement();
-            //requete
-            String SQL="select * from chambre where Disponible ="+1+";";
-            ResultSet rs= st.executeQuery(SQL);
-            int nbrrow= rs.getRow();
-            if(nbrrow==0){
-                JOptionPane.showMessageDialog(null, "Mouvaise recherche");
-            }else{
-           jTable1.setModel(DbUtils.resultSetToTableModel(rs));}
-            
-        }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}
-        
-    }//GEN-LAST:event_disponibiliteActionPerformed
+    private void refreshFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshFocusGained
+
+    private void refreshFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshFocusLost
+
+    private void refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshMousePressed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+       new Chambre().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -542,7 +545,7 @@ Connection cnx=null;
             cnx.close();
             
         }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}
+       JOptionPane.showMessageDialog(this, e,"Erreur",JOptionPane.ERROR_MESSAGE);}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -551,15 +554,14 @@ Connection cnx=null;
     private javax.swing.JButton Bchercher;
     private javax.swing.JButton Bsupprimer;
     private javax.swing.JTextField RechercheFiled;
-    private javax.swing.JComboBox<String> disponibilite;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }

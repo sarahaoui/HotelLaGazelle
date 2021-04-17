@@ -7,6 +7,7 @@ package HotelPackage;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -47,24 +48,27 @@ Connection cnx=null;
         jLabel19 = new javax.swing.JLabel();
         NumEtage = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        Categorie = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         NbrLits = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         Prix = new javax.swing.JTextField();
         Confirme = new javax.swing.JButton();
         Annuler = new javax.swing.JButton();
+        Categorie = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 236, 228));
         jLabel1.setText("Fiche Chambre");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(21, 14, 182, 32);
 
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
+        jButton1.setBackground(new java.awt.Color(0, 0, 0,0));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,79 +83,104 @@ Connection cnx=null;
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1122, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1);
+        jButton1.setBounds(1325, 14, 24, 25);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 60));
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 248));
+        jPanel2.setLayout(null);
 
         jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(2, 5, 8));
         jLabel17.setText("N° de chambre");
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(98, 91, 134, 25);
 
         NumChambre.setBackground(new java.awt.Color(250, 249, 248));
         NumChambre.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumChambre.setForeground(new java.awt.Color(2, 5, 8));
+        NumChambre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NumChambreKeyTyped(evt);
+            }
+        });
+        jPanel2.add(NumChambre);
+        NumChambre.setBounds(319, 86, 270, 38);
 
         jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(2, 5, 8));
         jLabel18.setText("N° de bloc");
+        jPanel2.add(jLabel18);
+        jLabel18.setBounds(98, 154, 94, 25);
 
         NumBloc.setBackground(new java.awt.Color(250, 249, 248));
         NumBloc.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumBloc.setForeground(new java.awt.Color(2, 5, 8));
+        NumBloc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NumBlocKeyTyped(evt);
+            }
+        });
+        jPanel2.add(NumBloc);
+        NumBloc.setBounds(319, 149, 270, 38);
 
         jLabel19.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(2, 5, 8));
         jLabel19.setText("N° de étage");
+        jPanel2.add(jLabel19);
+        jLabel19.setBounds(98, 220, 105, 25);
 
         NumEtage.setBackground(new java.awt.Color(250, 249, 248));
         NumEtage.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumEtage.setForeground(new java.awt.Color(2, 5, 8));
+        NumEtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NumEtageKeyTyped(evt);
+            }
+        });
+        jPanel2.add(NumEtage);
+        NumEtage.setBounds(319, 215, 270, 38);
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(2, 5, 8));
         jLabel20.setText("Catégorie");
-
-        Categorie.setBackground(new java.awt.Color(250, 249, 248));
-        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        Categorie.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(jLabel20);
+        jLabel20.setBounds(702, 91, 88, 25);
 
         jLabel21.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(2, 5, 8));
         jLabel21.setText("Nbr de lits");
+        jPanel2.add(jLabel21);
+        jLabel21.setBounds(702, 154, 97, 25);
 
         NbrLits.setBackground(new java.awt.Color(250, 249, 248));
         NbrLits.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NbrLits.setForeground(new java.awt.Color(2, 5, 8));
+        NbrLits.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NbrLitsKeyTyped(evt);
+            }
+        });
+        jPanel2.add(NbrLits);
+        NbrLits.setBounds(929, 149, 270, 38);
 
         jLabel22.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(2, 5, 8));
         jLabel22.setText("Prix de chambre");
+        jPanel2.add(jLabel22);
+        jLabel22.setBounds(702, 220, 150, 25);
 
         Prix.setBackground(new java.awt.Color(250, 249, 248));
         Prix.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         Prix.setForeground(new java.awt.Color(2, 5, 8));
+        Prix.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrixKeyTyped(evt);
+            }
+        });
+        jPanel2.add(Prix);
+        Prix.setBounds(929, 215, 270, 38);
 
         Confirme.setBackground(new java.awt.Color(0, 0, 0));
         Confirme.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -184,6 +213,8 @@ Connection cnx=null;
                 ConfirmeActionPerformed(evt);
             }
         });
+        jPanel2.add(Confirme);
+        Confirme.setBounds(1025, 612, 133, 43);
 
         Annuler.setBackground(new java.awt.Color(0, 0, 0));
         Annuler.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -203,83 +234,15 @@ Connection cnx=null;
                 AnnulerActionPerformed(evt);
             }
         });
+        jPanel2.add(Annuler);
+        Annuler.setBounds(1163, 612, 120, 43);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NumChambre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NumBloc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(113, 113, 113)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Categorie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NbrLits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(261, 261, 261))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Confirme, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(NbrLits, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(NumChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(NumBloc, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(NumEtage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Confirme, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(305, 305, 305))
-        );
+        Categorie.setBackground(new java.awt.Color(250, 249, 248));
+        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        Categorie.setForeground(new java.awt.Color(2, 5, 8));
+        Categorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Standard ", "Standard vue Mer", "Luxe vue Jardin", "Luxe vue Mer", " " }));
+        jPanel2.add(Categorie);
+        Categorie.setBounds(930, 80, 270, 40);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -319,48 +282,52 @@ Connection cnx=null;
     }//GEN-LAST:event_ConfirmeMousePressed
 
     private void ConfirmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmeActionPerformed
+     ArrayList<String> table= new ArrayList<>();
       // conditions sur les champs 
-      int k=0;
-      String catégorie= Categorie.getText().toString(); 
-      try{
-        Integer.parseInt(NumChambre.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de chambre doit etre un nombre entier !!");;} 
-        try{
-        Integer.parseInt(NumBloc.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de bloc doit etre un nombre entier !!");} 
-       try{
-        Integer.parseInt(NumEtage.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de l'étage doit etre un nombre entier !!");}  
-       try{
-        Integer.parseInt(NbrLits.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "le nombre de lits doit etre un nombre entier !!");} 
-      try{
-        Double.parseDouble(Prix.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "le prix de chambre doit etre un nombre !!");}  
-         
-      //remplir BD 
-      if(k==5){
-      try{
+      if((NumChambre.getText().isEmpty())|(NumEtage.getText().isEmpty())|(NumBloc.getText().isEmpty())|(NbrLits.getText().isEmpty())|(Prix.getText().isEmpty())){
+      JOptionPane.showMessageDialog(this, "Tous les champs doivent etre remplis !!","Erreur",JOptionPane.ERROR_MESSAGE);
+      }
+      else{ 
+         try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select NumChambre from chambre ;";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                //add data until finish
+              table.add(rs.getString("NumChambre"));
+            }
+            cnx.close();
+           
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+         for(int i=0;i<table.size();i++){
+             String num =NumChambre.getText().toString();
+             String num2=table.get(i);
+            if(!((num).equals(num2))){
+             //remplir BD 
+             try{
            Class.forName("com.mysql.jdbc.Driver");
             System.err.println("connected");
             Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
             Statement st =cnx.createStatement();
             //requete
             String SQL ="insert into chambre(NumChambre,NumBloc,NumEtage,Categorie,NbrLits,PrixChambre,Disponible)"+
-              "values("+NumChambre.getText().toString()+","+NumBloc.getText().toString()+","+NumEtage.getText().toString()+","+"\""+Categorie.getText().toString()+"\"" +","+NbrLits.getText().toString()+","+Prix.getText().toString()+","+1+");";
+              "values("+NumChambre.getText().toString()+","+NumBloc.getText().toString()+","+NumEtage.getText().toString()+","+"\""+Categorie.getSelectedItem().toString()+"\"" +","+NbrLits.getText().toString()+","+Prix.getText().toString()+","+1+");";
             
             st.executeUpdate(SQL); 
-            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            JOptionPane.showMessageDialog(this," Insérer avec succès ","Info",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             new Chambre().setVisible(true);
            
         }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}}
+        /*JOptionPane.showMessageDialog(null,e);*/}
+             
+            }
+            else{JOptionPane.showMessageDialog(this,"le numéro de chambre existe déja !!","Erreur",JOptionPane.ERROR_MESSAGE);}}}
       
       
         
@@ -386,6 +353,36 @@ Connection cnx=null;
     private void ConfirmeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmeMouseMoved
         
     }//GEN-LAST:event_ConfirmeMouseMoved
+
+    private void NumChambreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumChambreKeyTyped
+        char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_NumChambreKeyTyped
+
+    private void NumBlocKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumBlocKeyTyped
+       char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_NumBlocKeyTyped
+
+    private void NumEtageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumEtageKeyTyped
+       char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_NumEtageKeyTyped
+
+    private void NbrLitsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NbrLitsKeyTyped
+        char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_NbrLitsKeyTyped
+
+    private void PrixKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrixKeyTyped
+       char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_PrixKeyTyped
 
     /**
      * @param args the command line arguments
@@ -424,7 +421,7 @@ Connection cnx=null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Annuler;
-    private javax.swing.JTextField Categorie;
+    private javax.swing.JComboBox<String> Categorie;
     private javax.swing.JButton Confirme;
     private javax.swing.JTextField NbrLits;
     private javax.swing.JTextField NumBloc;

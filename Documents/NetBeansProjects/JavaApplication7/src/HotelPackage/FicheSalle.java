@@ -7,7 +7,9 @@ package HotelPackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,22 +43,25 @@ public class FicheSalle extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         NumSalle = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        Categorie = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         prix = new javax.swing.JTextField();
         BConfirmer = new javax.swing.JButton();
         BAnnuler = new javax.swing.JButton();
+        Categorie = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 236, 228));
         jLabel1.setText("Fiche Salle");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(21, 14, 130, 32);
 
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
+        jButton1.setBackground(new java.awt.Color(0, 0, 0,0));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,55 +76,53 @@ public class FicheSalle extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1174, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1);
+        jButton1.setBounds(1325, 14, 24, 25);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 60));
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 248));
+        jPanel2.setLayout(null);
 
         jLabel17.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(2, 5, 8));
         jLabel17.setText("N° de salle");
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(98, 91, 97, 25);
 
         NumSalle.setBackground(new java.awt.Color(250, 249, 248));
         NumSalle.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         NumSalle.setForeground(new java.awt.Color(2, 5, 8));
+        NumSalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NumSalleKeyTyped(evt);
+            }
+        });
+        jPanel2.add(NumSalle);
+        NumSalle.setBounds(250, 80, 270, 38);
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(2, 5, 8));
         jLabel20.setText("Catégorie");
-
-        Categorie.setBackground(new java.awt.Color(250, 249, 248));
-        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
-        Categorie.setForeground(new java.awt.Color(2, 5, 8));
+        jPanel2.add(jLabel20);
+        jLabel20.setBounds(684, 91, 88, 25);
 
         jLabel22.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(2, 5, 8));
         jLabel22.setText("Prix de salle");
+        jPanel2.add(jLabel22);
+        jLabel22.setBounds(98, 167, 113, 25);
 
         prix.setBackground(new java.awt.Color(250, 249, 248));
         prix.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
         prix.setForeground(new java.awt.Color(2, 5, 8));
+        prix.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                prixKeyTyped(evt);
+            }
+        });
+        jPanel2.add(prix);
+        prix.setBounds(250, 160, 270, 38);
 
         BConfirmer.setBackground(new java.awt.Color(0, 0, 0));
         BConfirmer.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -147,6 +150,8 @@ public class FicheSalle extends javax.swing.JFrame {
                 BConfirmerActionPerformed(evt);
             }
         });
+        jPanel2.add(BConfirmer);
+        BConfirmer.setBounds(1025, 612, 133, 43);
 
         BAnnuler.setBackground(new java.awt.Color(0, 0, 0));
         BAnnuler.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -171,55 +176,15 @@ public class FicheSalle extends javax.swing.JFrame {
                 BAnnulerActionPerformed(evt);
             }
         });
+        jPanel2.add(BAnnuler);
+        BAnnuler.setBounds(1163, 612, 120, 43);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                        .addComponent(NumSalle, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(113, 113, 113)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(261, 261, 261))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel20)
-                        .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17)
-                        .addComponent(NumSalle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(305, 305, 305))
-        );
+        Categorie.setBackground(new java.awt.Color(250, 249, 248));
+        Categorie.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        Categorie.setForeground(new java.awt.Color(2, 5, 8));
+        Categorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Salle de formation", "Salle d audition", "Salle de conference", "Salle de reunion", "Salle de seminaire", " ", " " }));
+        jPanel2.add(Categorie);
+        Categorie.setBounds(790, 70, 270, 40);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -254,42 +219,56 @@ public class FicheSalle extends javax.swing.JFrame {
     }//GEN-LAST:event_BAnnulerFocusGained
 
     private void BConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConfirmerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BConfirmerActionPerformed
-
-    private void BConfirmerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BConfirmerMousePressed
-    // conditions sur les champs 
-      int k=0;
-      String catégorie= Categorie.getText().toString(); 
-      try{
-        Integer.parseInt(NumSalle.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "la N° de salle doit etre un nombre entier !!");;} 
-      
-       try{
-        Integer.parseInt(prix.getText());
-        k++;
-    }catch(Exception e){JOptionPane.showMessageDialog(null, "le prix de salle doit etre un nombre  !!");}  
-       
-         
-      //remplir BD 
-      if(k==2){
-      try{
+      ArrayList<String> table= new ArrayList<>();
+      // conditions sur les champs 
+      if((NumSalle.getText().isEmpty())|(prix.getText().isEmpty())){
+      JOptionPane.showMessageDialog(this, "Tous les champs doivent etre remplis !!","Erreur",JOptionPane.ERROR_MESSAGE);
+      }
+      else{ 
+         try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select NumSalle from salle ;";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                //add data until finish
+              table.add(rs.getString("NumSalle"));
+            }
+            cnx.close();
+           
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);}
+         for(int i=0;i<table.size();i++){
+             String num =NumSalle.getText().toString();
+             String num2=table.get(i);
+            if(!((num).equals(num2))){
+             //remplir BD 
+             try{
            Class.forName("com.mysql.jdbc.Driver");
             System.err.println("connected");
             Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
             Statement st =cnx.createStatement();
             //requete
             String SQL ="insert into salle(NumSalle,PrixSalle,CategorieSalle,DisponibilteSalle)"+
-              "values("+NumSalle.getText().toString()+","+prix.getText().toString()+","+"\""+Categorie.getText().toString()+"\"" +","+"\""+1+"\""+");";
+              "values("+NumSalle.getText().toString()+","+prix.getText().toString()+","+"\""+Categorie.getSelectedItem().toString()+"\"" +","+"\""+1+"\""+");";
             
             st.executeUpdate(SQL); 
-            JOptionPane.showMessageDialog(null, "Oprération réussie");
+            JOptionPane.showMessageDialog(this," Insérer avec succès ","Info",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             new Salle().setVisible(true);
            
         }catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);}}
+        /*JOptionPane.showMessageDialog(null,e);*/}
+             
+            }
+            else{JOptionPane.showMessageDialog(this,"le numéro de salle existe déja !!","Erreur",JOptionPane.ERROR_MESSAGE);}}}
+    }//GEN-LAST:event_BConfirmerActionPerformed
+
+    private void BConfirmerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BConfirmerMousePressed
+   
     }//GEN-LAST:event_BConfirmerMousePressed
 
     private void BConfirmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BConfirmerMouseClicked
@@ -310,6 +289,18 @@ public class FicheSalle extends javax.swing.JFrame {
         new Salle().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BAnnulerMousePressed
+
+    private void NumSalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumSalleKeyTyped
+         char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_NumSalleKeyTyped
+
+    private void prixKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prixKeyTyped
+        char text= evt.getKeyChar();
+       if(!(Character.isDigit(text))){
+       evt.consume();}
+    }//GEN-LAST:event_prixKeyTyped
 
     /**
      * @param args the command line arguments
@@ -349,7 +340,7 @@ public class FicheSalle extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BAnnuler;
     private javax.swing.JButton BConfirmer;
-    private javax.swing.JTextField Categorie;
+    private javax.swing.JComboBox<String> Categorie;
     private javax.swing.JTextField NumSalle;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

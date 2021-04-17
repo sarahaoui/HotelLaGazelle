@@ -34,23 +34,91 @@ public class Accueil extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        Bstatistiques = new javax.swing.JButton();
-        BCllient = new javax.swing.JButton();
-        Bcaisse = new javax.swing.JButton();
+        BChambre = new javax.swing.JButton();
         Breservation = new javax.swing.JButton();
         Bsalle = new javax.swing.JButton();
-        BChambre = new javax.swing.JButton();
+        Bstatistiques = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        Bcaisse = new javax.swing.JButton();
+        BCllient = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8,255));
+        jPanel1.setForeground(new java.awt.Color(2, 5, 8));
         jPanel1.setPreferredSize(new java.awt.Dimension(1469, 180));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\Group 26.png")); // NOI18N
+        BChambre.setBackground(new java.awt.Color(2, 5, 8,0));
+        BChambre.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        BChambre.setForeground(new java.awt.Color(250, 249, 248));
+        BChambre.setText("Chambre");
+        BChambre.setPreferredSize(new java.awt.Dimension(150, 52));
+        BChambre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BChambreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BChambreFocusLost(evt);
+            }
+        });
+        BChambre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BChambreMouseClicked(evt);
+            }
+        });
+        BChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BChambreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BChambre, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 136, 120, 43));
+
+        Breservation.setBackground(new java.awt.Color(2, 5, 8,0));
+        Breservation.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Breservation.setForeground(new java.awt.Color(250, 249, 248));
+        Breservation.setText("Réservation");
+        Breservation.setPreferredSize(new java.awt.Dimension(150, 52));
+        Breservation.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BreservationFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BreservationFocusLost(evt);
+            }
+        });
+        Breservation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BreservationMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BreservationMousePressed(evt);
+            }
+        });
+        jPanel1.add(Breservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(913, 136, 162, 43));
+
+        Bsalle.setBackground(new java.awt.Color(2, 5, 8,0));
+        Bsalle.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Bsalle.setForeground(new java.awt.Color(250, 249, 248));
+        Bsalle.setText("Salle");
+        Bsalle.setPreferredSize(new java.awt.Dimension(150, 52));
+        Bsalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BsalleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BsalleFocusLost(evt);
+            }
+        });
+        Bsalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BsalleMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Bsalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(788, 136, 120, 43));
 
         Bstatistiques.setBackground(new java.awt.Color(2, 5, 8,0));
         Bstatistiques.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -65,6 +133,41 @@ public class Accueil extends javax.swing.JFrame {
                 BstatistiquesFocusLost(evt);
             }
         });
+        jPanel1.add(Bstatistiques, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 136, -1, 43));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1317, 18, 24, 25));
+
+        Bcaisse.setBackground(new java.awt.Color(2, 5, 8,0));
+        Bcaisse.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Bcaisse.setForeground(new java.awt.Color(250, 249, 248));
+        Bcaisse.setText("Facture");
+        Bcaisse.setPreferredSize(new java.awt.Dimension(150, 52));
+        Bcaisse.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BcaisseFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BcaisseFocusLost(evt);
+            }
+        });
+        Bcaisse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BcaisseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Bcaisse, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 136, 120, 43));
 
         BCllient.setBackground(new java.awt.Color(2, 5, 8,0));
         BCllient.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -92,144 +195,10 @@ public class Accueil extends javax.swing.JFrame {
                 BCllientActionPerformed(evt);
             }
         });
+        jPanel1.add(BCllient, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 136, 120, 43));
 
-        Bcaisse.setBackground(new java.awt.Color(2, 5, 8,0));
-        Bcaisse.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        Bcaisse.setForeground(new java.awt.Color(250, 249, 248));
-        Bcaisse.setText("Caisse");
-        Bcaisse.setPreferredSize(new java.awt.Dimension(150, 52));
-        Bcaisse.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BcaisseFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                BcaisseFocusLost(evt);
-            }
-        });
-
-        Breservation.setBackground(new java.awt.Color(2, 5, 8,0));
-        Breservation.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        Breservation.setForeground(new java.awt.Color(250, 249, 248));
-        Breservation.setText("Réservation");
-        Breservation.setPreferredSize(new java.awt.Dimension(150, 52));
-        Breservation.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BreservationFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                BreservationFocusLost(evt);
-            }
-        });
-        Breservation.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BreservationMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BreservationMousePressed(evt);
-            }
-        });
-
-        Bsalle.setBackground(new java.awt.Color(2, 5, 8,0));
-        Bsalle.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        Bsalle.setForeground(new java.awt.Color(250, 249, 248));
-        Bsalle.setText("Salle");
-        Bsalle.setPreferredSize(new java.awt.Dimension(150, 52));
-        Bsalle.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BsalleFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                BsalleFocusLost(evt);
-            }
-        });
-        Bsalle.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BsalleMouseClicked(evt);
-            }
-        });
-
-        BChambre.setBackground(new java.awt.Color(2, 5, 8,0));
-        BChambre.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BChambre.setForeground(new java.awt.Color(250, 249, 248));
-        BChambre.setText("Chambre");
-        BChambre.setPreferredSize(new java.awt.Dimension(150, 52));
-        BChambre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BChambreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                BChambreFocusLost(evt);
-            }
-        });
-        BChambre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BChambreMouseClicked(evt);
-            }
-        });
-        BChambre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BChambreActionPerformed(evt);
-            }
-        });
-
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bsalle, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Breservation, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bcaisse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bstatistiques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 522, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Bstatistiques, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BCllient, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bcaisse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Breservation, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bsalle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\Group 26.png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 190));
 
@@ -347,6 +316,10 @@ public class Accueil extends javax.swing.JFrame {
     private void BsalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BsalleMouseClicked
         new Salle().setVisible(true);
     }//GEN-LAST:event_BsalleMouseClicked
+
+    private void BcaisseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcaisseActionPerformed
+       new Facture().setVisible(true);
+    }//GEN-LAST:event_BcaisseActionPerformed
 
     /**
      * @param args the command line arguments

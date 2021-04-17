@@ -5,12 +5,15 @@
  */
 package HotelPackage;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -26,6 +29,11 @@ public class Salle extends javax.swing.JFrame {
         setResizable(false);
         initComponents();
         updatetable();
+        jTable.getTableHeader().setFont(new Font ("Bell MT",Font.BOLD,14));
+        jTable.getTableHeader().setOpaque(false);
+        jTable.getTableHeader().setBackground(new Color(250,249,248));
+        jTable.getTableHeader().setForeground(new Color(2,5,8));
+        jTable.setRowHeight(25);
     }
 
     /**
@@ -42,22 +50,30 @@ public class Salle extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         Bsupprimer = new javax.swing.JButton();
-        BNouveau = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         BFiche = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        jComboBox = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        RechercheFiled = new javax.swing.JTextField();
+        Bchercher = new javax.swing.JButton();
+        BNouveau2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 236, 228));
         jLabel1.setText("Salle");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(21, 14, 57, 32);
 
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HotelPackage/exitpng.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -71,31 +87,13 @@ public class Salle extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1247, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1);
+        jButton1.setBounds(1325, 14, 24, 25);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 60));
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 248));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Bsupprimer.setBackground(new java.awt.Color(250, 249, 248));
         Bsupprimer.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
@@ -121,35 +119,38 @@ public class Salle extends javax.swing.JFrame {
                 BsupprimerActionPerformed(evt);
             }
         });
+        jPanel2.add(Bsupprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 240, 158, 43));
 
-        BNouveau.setBackground(new java.awt.Color(250, 249, 248));
-        BNouveau.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
-        BNouveau.setForeground(new java.awt.Color(2, 5, 8));
-        BNouveau.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\plus.png")); // NOI18N
-        BNouveau.setText(" Nouveau");
-        BNouveau.setPreferredSize(new java.awt.Dimension(150, 52));
-        BNouveau.addFocusListener(new java.awt.event.FocusAdapter() {
+        refresh.setBackground(new java.awt.Color(250, 249, 248));
+        refresh.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        refresh.setForeground(new java.awt.Color(2, 5, 8));
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\update.png")); // NOI18N
+        refresh.setText("refresh");
+        refresh.setPreferredSize(new java.awt.Dimension(150, 52));
+        refresh.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                BNouveauFocusGained(evt);
+                refreshFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                BNouveauFocusLost(evt);
+                refreshFocusLost(evt);
             }
         });
-        BNouveau.addMouseListener(new java.awt.event.MouseAdapter() {
+        refresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BNouveauMousePressed(evt);
+                refreshMousePressed(evt);
             }
         });
-        BNouveau.addActionListener(new java.awt.event.ActionListener() {
+        refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BNouveauActionPerformed(evt);
+                refreshActionPerformed(evt);
             }
         });
+        jPanel2.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, -1, 43));
 
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
+        BFiche.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\stylo.png")); // NOI18N
         BFiche.setText("Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -170,9 +171,9 @@ public class Salle extends javax.swing.JFrame {
                 BFicheActionPerformed(evt);
             }
         });
+        jPanel2.add(BFiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 240, -1, 43));
 
         jTable.setBackground(new java.awt.Color(250, 249, 248));
-        jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 186, 162), new java.awt.Color(0, 0, 0)));
         jTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jTable.setForeground(new java.awt.Color(2, 5, 8));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -180,7 +181,7 @@ public class Salle extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N°Salle", "Prix", "Catégorie", "Disponible"
+                "N°Salle", "Prix", "Catégorie"
             }
         ));
         jTable.setFocusable(false);
@@ -193,35 +194,80 @@ public class Salle extends javax.swing.JFrame {
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(287, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(171, 171, 171))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(403, Short.MAX_VALUE))
-        );
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 1330, 333));
+
+        jComboBox.setBackground(new java.awt.Color(250, 249, 248));
+        jComboBox.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jComboBox.setForeground(new java.awt.Color(2, 5, 8));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NumSalle", "PrixSalle", "CategorieSalle", " ", " " }));
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 203, 36));
+
+        jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel18.setText("Recherche par");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 65, -1, -1));
+
+        RechercheFiled.setBackground(new java.awt.Color(250, 250, 250));
+        RechercheFiled.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        RechercheFiled.setForeground(new java.awt.Color(2, 5, 8));
+        RechercheFiled.setSelectionColor(new java.awt.Color(2, 5, 8));
+        jPanel2.add(RechercheFiled, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 385, 38));
+
+        Bchercher.setBackground(new java.awt.Color(250,249,248));
+        Bchercher.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Bchercher.setForeground(new java.awt.Color(2,5,8));
+        Bchercher.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\chercher.png")); // NOI18N
+        Bchercher.setPreferredSize(new java.awt.Dimension(150, 52));
+        Bchercher.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BchercherFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BchercherFocusLost(evt);
+            }
+        });
+        Bchercher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BchercherMousePressed(evt);
+            }
+        });
+        Bchercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BchercherActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Bchercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 52, 38));
+
+        BNouveau2.setBackground(new java.awt.Color(250, 249, 248));
+        BNouveau2.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        BNouveau2.setForeground(new java.awt.Color(2, 5, 8));
+        BNouveau2.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\plus.png")); // NOI18N
+        BNouveau2.setText(" Nouveau");
+        BNouveau2.setPreferredSize(new java.awt.Dimension(150, 52));
+        BNouveau2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BNouveau2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BNouveau2FocusLost(evt);
+            }
+        });
+        BNouveau2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BNouveau2MousePressed(evt);
+            }
+        });
+        BNouveau2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BNouveau2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BNouveau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, -1, 43));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
 
@@ -263,7 +309,7 @@ public class Salle extends javax.swing.JFrame {
             //requete
             String SQL="delete from salle where NumSalle="+Numsalle+";";
             st.executeUpdate(SQL); 
-            JOptionPane.showMessageDialog(null, "Oprération réussie");
+           JOptionPane.showMessageDialog(this," Supprimer avec succès ","Info",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             new Salle().setVisible(true);
            
@@ -277,21 +323,23 @@ public class Salle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BsupprimerActionPerformed
 
-    private void BNouveauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveauFocusGained
+    private void refreshFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusGained
 
-    }//GEN-LAST:event_BNouveauFocusGained
+    }//GEN-LAST:event_refreshFocusGained
 
-    private void BNouveauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveauFocusLost
+    private void refreshFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_BNouveauFocusLost
+    }//GEN-LAST:event_refreshFocusLost
 
-    private void BNouveauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BNouveauMousePressed
-        new FicheSalle().setVisible(true);
-    }//GEN-LAST:event_BNouveauMousePressed
+    private void refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMousePressed
+        
+    }//GEN-LAST:event_refreshMousePressed
 
-    private void BNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BNouveauActionPerformed
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        new Salle().setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_refreshActionPerformed
 
     private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
         // TODO add your handling code here:
@@ -306,8 +354,69 @@ public class Salle extends javax.swing.JFrame {
     }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
-        // TODO add your handling code here:
+        new ModifierSalle().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BFicheActionPerformed
+
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+
+    }//GEN-LAST:event_jComboBoxActionPerformed
+
+    private void BchercherFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusGained
+
+    private void BchercherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusLost
+
+    private void BchercherMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BchercherMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherMousePressed
+
+    private void BchercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BchercherActionPerformed
+
+        String id= jComboBox.getSelectedItem().toString();
+        String recherche= RechercheFiled.getText().toString();
+        
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            System.err.println("1");
+            //requete
+            // String SQL="SELECT * FROM chambre WEHRE NumChambre  = "+ recherche+"";
+            
+            Statement st =cnx.createStatement();
+          
+            ResultSet rs= st.executeQuery("select * from salle where "+id+"='"+recherche+"';");
+            if(!rs.isBeforeFirst()){
+                JOptionPane.showMessageDialog(this," La salle n'existe pas !! ","Info",JOptionPane.INFORMATION_MESSAGE);
+            }
+            jTable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e,"Erreur",JOptionPane.ERROR_MESSAGE);}
+    }//GEN-LAST:event_BchercherActionPerformed
+
+    private void BNouveau2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveau2FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BNouveau2FocusGained
+
+    private void BNouveau2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveau2FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BNouveau2FocusLost
+
+    private void BNouveau2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BNouveau2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BNouveau2MousePressed
+
+    private void BNouveau2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveau2ActionPerformed
+        new FicheSalle().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BNouveau2ActionPerformed
     public void updatetable(){
         try{
            Class.forName("com.mysql.jdbc.Driver");
@@ -374,13 +483,18 @@ public class Salle extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BFiche;
-    private javax.swing.JButton BNouveau;
+    private javax.swing.JButton BNouveau2;
+    private javax.swing.JButton Bchercher;
     private javax.swing.JButton Bsupprimer;
+    private javax.swing.JTextField RechercheFiled;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }

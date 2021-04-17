@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package HotelPackage;
-
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author pc-click
@@ -18,6 +24,12 @@ public class Client extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         initComponents();
+        jTable1.getTableHeader().setFont(new Font ("Bell MT",Font.BOLD,14));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(250,249,248));
+        jTable1.getTableHeader().setForeground(new Color(2,5,8));
+        jTable1.setRowHeight(25);
+        updatetable();
     }
 
     /**
@@ -36,17 +48,27 @@ public class Client extends javax.swing.JFrame {
         Bsupprimer = new javax.swing.JButton();
         BNouveau = new javax.swing.JButton();
         BFiche = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Bchercher = new javax.swing.JButton();
+        RechercheFiled = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox = new javax.swing.JComboBox<>();
+        refresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 5, 8));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 236, 228));
         jLabel1.setText("Client");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(21, 14, 74, 32);
 
-        jButton1.setBackground(new java.awt.Color(2, 5, 8,0));
+        jButton1.setBackground(new java.awt.Color(0, 0, 0,0));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\exitpng.png")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -61,27 +83,8 @@ public class Client extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1230, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1);
+        jButton1.setBounds(1325, 14, 24, 25);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 60));
 
@@ -115,7 +118,7 @@ public class Client extends javax.swing.JFrame {
         BNouveau.setBackground(new java.awt.Color(250, 249, 248));
         BNouveau.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BNouveau.setForeground(new java.awt.Color(2, 5, 8));
-        BNouveau.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\add-friend.png")); // NOI18N
+        BNouveau.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\plus.png")); // NOI18N
         BNouveau.setText(" Nouveau");
         BNouveau.setPreferredSize(new java.awt.Dimension(150, 52));
         BNouveau.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -140,7 +143,8 @@ public class Client extends javax.swing.JFrame {
         BFiche.setBackground(new java.awt.Color(250, 249, 248));
         BFiche.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
         BFiche.setForeground(new java.awt.Color(2, 5, 8));
-        BFiche.setText("Modifier");
+        BFiche.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\stylo.png")); // NOI18N
+        BFiche.setText(" Modifier");
         BFiche.setPreferredSize(new java.awt.Dimension(150, 52));
         BFiche.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -161,28 +165,143 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setBackground(new java.awt.Color(250, 249, 248));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(2, 5, 8));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Client", "Nom", "Prénom", "Date naissnace", "Lieu naissance", "Nationalité", "N° carte Nationale", "Type Paiement", "Profession", "Téléphone", "Email"
+            }
+        ));
+        jTable1.setFocusable(false);
+        jTable1.setGridColor(new java.awt.Color(2, 5, 8));
+        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(2, 5, 8));
+        jTable1.setSelectionForeground(new java.awt.Color(250, 249, 248));
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+
+        Bchercher.setBackground(new java.awt.Color(250,249,248));
+        Bchercher.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        Bchercher.setForeground(new java.awt.Color(2,5,8));
+        Bchercher.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\chercher.png")); // NOI18N
+        Bchercher.setPreferredSize(new java.awt.Dimension(150, 52));
+        Bchercher.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BchercherFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BchercherFocusLost(evt);
+            }
+        });
+        Bchercher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BchercherMousePressed(evt);
+            }
+        });
+        Bchercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BchercherActionPerformed(evt);
+            }
+        });
+
+        RechercheFiled.setBackground(new java.awt.Color(250, 250, 250));
+        RechercheFiled.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        RechercheFiled.setForeground(new java.awt.Color(2, 5, 8));
+
+        jLabel18.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(2, 5, 8));
+        jLabel18.setText("Recherche par");
+
+        jComboBox.setBackground(new java.awt.Color(250, 249, 248));
+        jComboBox.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jComboBox.setForeground(new java.awt.Color(2, 5, 8));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id_client", "Nom", "Prenom", "Nationalite", "n°carteN", "Profession", "Telephone", "Email", " " }));
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxActionPerformed(evt);
+            }
+        });
+
+        refresh.setBackground(new java.awt.Color(250, 249, 248));
+        refresh.setFont(new java.awt.Font("Bell MT", 0, 22)); // NOI18N
+        refresh.setForeground(new java.awt.Color(2, 5, 8));
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc-click\\Documents\\NetBeansProjects\\HotelLaGazellee\\Documents\\NetBeansProjects\\JavaApplication7\\src\\HotelPackage\\update.png")); // NOI18N
+        refresh.setText("refresh");
+        refresh.setPreferredSize(new java.awt.Dimension(150, 52));
+        refresh.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                refreshFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                refreshFocusLost(evt);
+            }
+        });
+        refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                refreshMousePressed(evt);
+            }
+        });
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(276, 276, 276)
+                        .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(107, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(818, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
+                .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Bchercher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(RechercheFiled, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(137, 137, 137)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bsupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(865, Short.MAX_VALUE))
+                    .addComponent(BNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1460, 960));
@@ -205,12 +324,10 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MousePressed
 
     private void BsupprimerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BsupprimerFocusGained
-       
 
     }//GEN-LAST:event_BsupprimerFocusGained
 
     private void BsupprimerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BsupprimerFocusLost
-       
 
     }//GEN-LAST:event_BsupprimerFocusLost
 
@@ -219,11 +336,31 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_BsupprimerMousePressed
 
     private void BsupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsupprimerActionPerformed
-        // TODO add your handling code here:
+
+        int ligne =0;
+        ligne=jTable1.getSelectedRow();
+        // recupere les elements
+        String id_client =jTable1.getValueAt(ligne,0).toString();
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="delete from clientt where Id_client="+id_client+";";
+            st.executeUpdate(SQL);
+            JOptionPane.showMessageDialog(this, "Supprimer avec succès","info",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            new Client().setVisible(true);
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);}
+
     }//GEN-LAST:event_BsupprimerActionPerformed
 
     private void BNouveauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveauFocusGained
-    
+
     }//GEN-LAST:event_BNouveauFocusGained
 
     private void BNouveauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BNouveauFocusLost
@@ -231,12 +368,13 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_BNouveauFocusLost
 
     private void BNouveauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BNouveauMousePressed
-        new FicheClient().setVisible(true);
-        
+
     }//GEN-LAST:event_BNouveauMousePressed
 
     private void BNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNouveauActionPerformed
-        // TODO add your handling code here:
+        // add new chambre
+        new FicheClient().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BNouveauActionPerformed
 
     private void BFicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFicheFocusGained
@@ -248,12 +386,71 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_BFicheFocusLost
 
     private void BFicheMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMousePressed
-        // TODO add your handling code here:
+
+        
     }//GEN-LAST:event_BFicheMousePressed
 
     private void BFicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFicheActionPerformed
-        // TODO add your handling code here:
+     new ModifierClient().setVisible(true);
     }//GEN-LAST:event_BFicheActionPerformed
+
+    private void BchercherFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusGained
+
+    private void BchercherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BchercherFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherFocusLost
+
+    private void BchercherMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BchercherMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BchercherMousePressed
+
+    private void BchercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BchercherActionPerformed
+
+        String id= jComboBox.getSelectedItem().toString();
+        String recherche= RechercheFiled.getText().toString();
+      
+         //JOptionPane.showMessageDialog(null,id);
+         //JOptionPane.showMessageDialog(null,recherche);
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+
+            Statement st =cnx.createStatement();
+
+            ResultSet rs= st.executeQuery("select * from clientt where "+id+"='"+recherche+"';");
+            if(!rs.isBeforeFirst()){
+                JOptionPane.showMessageDialog(this," Le client n'existe pas !! ","Info",JOptionPane.INFORMATION_MESSAGE);
+            }
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e,"Erreur",JOptionPane.ERROR_MESSAGE);}
+    }//GEN-LAST:event_BchercherActionPerformed
+
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+
+    }//GEN-LAST:event_jComboBoxActionPerformed
+
+    private void refreshFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshFocusGained
+
+    private void refreshFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_refreshFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshFocusLost
+
+    private void refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshMousePressed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+       
+       new Client().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,14 +486,56 @@ public class Client extends javax.swing.JFrame {
             }
         });
     }
+     public void updatetable(){
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+            System.err.println("connected");
+            Connection cnx =DriverManager.getConnection("jdbc:mysql://localhost:3306/hotellagazelle","root","");
+            Statement st =cnx.createStatement();
+            //requete
+            String SQL="select * from clientt";
+            ResultSet rs= st.executeQuery(SQL);
+            while(rs.next()){
+                //add data until finish
+                String IDClient=String.valueOf(rs.getInt("Id_client"));
+                String nom=String.valueOf(rs.getString("Nom"));
+                String prenom=String.valueOf(rs.getString("Prenom"));
+                String date_n=String.valueOf(rs.getString("Date_nai"));
+                String lieu_n=String.valueOf(rs.getString("Lieu_nai"));
+                String nationalité=String.valueOf(rs.getString("Nationalite"));
+                String numcarte=String.valueOf(rs.getInt("numcarteN"));
+                String typePaiement=String.valueOf(rs.getString("TypePaiment"));
+                String profession=String.valueOf(rs.getString("Profession"));
+                String telephone=String.valueOf(rs.getInt("Telephone"));
+                String email=String.valueOf(rs.getString("Email"));
+                
+                //store in table
+                
+                String Table[]={IDClient,nom,prenom,date_n,lieu_n,nationalité,numcarte,typePaiement,profession,telephone,email};
+                DefaultTableModel tbModel= (DefaultTableModel)jTable1.getModel();
+               
+                tbModel.addRow(Table);
+            }
+            cnx.close();
+            
+        }catch(Exception e){
+       JOptionPane.showMessageDialog(this, e,"Erreur",JOptionPane.ERROR_MESSAGE);}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BFiche;
     private javax.swing.JButton BNouveau;
+    private javax.swing.JButton Bchercher;
     private javax.swing.JButton Bsupprimer;
+    private javax.swing.JTextField RechercheFiled;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }
