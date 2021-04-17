@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package HotelPackage;
 
 import java.awt.Color;
@@ -13,10 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author pc-click
- */
+
 public class Chambre extends javax.swing.JFrame {
     PreparedStatement pst = null;
 Connection cnx=null;
@@ -181,6 +174,9 @@ Connection cnx=null;
             }
         });
         BFiche.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BFicheMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BFicheMousePressed(evt);
             }
@@ -481,6 +477,10 @@ Connection cnx=null;
        new Chambre().setVisible(true);
        this.dispose();
     }//GEN-LAST:event_refreshActionPerformed
+
+    private void BFicheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFicheMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BFicheMouseClicked
 
     /**
      * @param args the command line arguments
